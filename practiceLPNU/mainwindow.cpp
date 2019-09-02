@@ -36,7 +36,9 @@ void MainWindow::on_pushButton_clicked()
 
     qDebug()<<"row count ="<<model1->rowCount();
     mDB.close();
+
 }
+
 
 QSqlDatabase& MainWindow::dB()
 {
