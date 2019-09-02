@@ -18,15 +18,21 @@ int main(int argc, char *argv[])
         qDebug()<<"Problem with opening DB";
     }
 
-    QString createTestBaseQuery = "CREATE TABLE TESTBASE ("
-                    "ID INTEGER,"
-                    "FIRSTNAME VARCHAR(20),"
-                    "LASTNAME VARCHAR(20),"
-                    "BIRTHDATE DATETIME,"
-                    "WEIGHT DOUBLE);";
+    auto createSuplierTable =
+            "CREATE TABLE ТОВАР"
+            "("
+            "ID INTEGER NOT NULL PRIMERY KEY,"
+            "НАЗВА VARCHAR(30) NOT NULL,"
+            "ДАТА_ВИГОТОВЛЕННЯ DATETIME,"
+            "ТЕРМІН_ПРИДАТНОСТІ DATETIME,"
+            "ВАГА DOUBLE,"
+            "ЯКІСТЬ VARCHAR(30),"
+            "ОПИС VARCHAR(100);";
+
+    auto
 
     QSqlQuery createDBQuery;
-    if (!createDBQuery.exec(createTestBaseQuery))
+    if (!createDBQuery.exec(createSuplierTable))
     {
         qDebug()<<"error when creating table";
     }

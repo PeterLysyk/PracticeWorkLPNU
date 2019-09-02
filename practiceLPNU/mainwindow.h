@@ -17,8 +17,6 @@ public:
     ~MainWindow();
 
     QSqlDatabase& dB();
-    void setDB(const QSqlDatabase &dB);
-
 private slots:
     void on_pushButton_clicked();
 
