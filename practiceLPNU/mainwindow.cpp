@@ -32,10 +32,6 @@ void MainWindow::on_pushButton_clicked()
 
     ui->tableView->setModel(model.get());
     ui->tableView->setVisible(true);
-    while(1)
-    {
-        qDebug()<<"1";
-    }
 
     qDebug()<<"row count ="<<model->rowCount();
     mDB.close();
