@@ -17,53 +17,102 @@ int main(int argc, char *argv[])
     {
         qDebug()<<"Problem with opening DB";
     }
-
-    auto createGoodsTable =
+//////////////////////////////////////////////////////////////////////////
+    auto createGoodsTableQuery =
             "CREATE TABLE ТОВАР"
             "("
             "ID_ТОВАРУ INTEGER NOT NULL,"
             "НАЗВА VARCHAR(30) NOT NULL,"
-            "ДАТА_ВИГОТОВЛЕННЯ DATETIME,"
+            "ДАТА_ВИГОТОВЛЕННЯ DATE,"
             "ТЕРМІН_ПРИДАТНОСТІ DATE,"
             "ВАГА DOUBLE,"
             "ЯКІСТЬ VARCHAR(30),"
-            "ОПИС VARCHAR(100)"
+            "ОПИС VARCHAR(100),"
             "PRIMARY KEY (ID_ТОВАРУ)"
             ");";
 
-    auto createStorageTable =
+    QSqlQuery goodsQuery;
+
+    if (!goodsQuery.exec(createGoodsTableQuery))
+    {
+        qDebug()<<"error creating goods table";
+    }
+////////////////////////////////////////////////////////////////////////////
+    auto createStorageTableQuery =
+            "CREATE TABLE СКЛАД"
             "("
             "ID_СКЛАДУ INTEGER NOT NULL,"
-            "АДРЕСА_МІСТО  VARCHAR(20) NOT NULL,"
-            "АДРЕСА_ВУЛИЦЯ VARCHAR(20) NOT NULL,"
-            "АДРЕСА_НОМЕР  VARCHAR(5)  NOT NULL,"
+            "АДРЕСА_МІСТО  VARCHAR(20),"
+            "АДРЕСА_ВУЛИЦЯ VARCHAR(20),"
+            "АДРЕСА_НОМЕР  VARCHAR(5),"
             "КІЛЬКІСТЬ_КОМІРОК INT,"
             "ПЛОЩА DOUBLE,"
             "PRIMARY KEY (ID_СКЛАДУ)"
-            ")"
-            ;
+            ");";
 
-    auto createSuplierTable =
+    QSqlQuery storageQuery;
+
+    if (!storageQuery.exec(createStorageTableQuery))
+    {
+        qDebug()<<"error creating storage table";
+    }
+/////////////////////////////////////////////////////////////////////////////
+    auto createSuplierTableQuery =
+            "CREATE TABLE ПОСТАЧАЛЬНИК"
             "("
             "ID_ПОСТАЧАЛЬНИКА INTEGER NOT NULL,"
-            "НАЗВА VARCHAR(30) NUT NULL,"
+            "НАЗВА VARCHAR(30) NOT NULL,"
             "ДАТА_УКЛАДЕННЯ_ДОГОВОРУ DATE"
             "РЕЙТИНГ INTEGER,"
             "PRIMARY KEY (ID_ПОСТАЧАЛЬНИКА)"
-            ")";
+            ");";
 
-    auto createDeliveryTable =
-            "("
-            "ID_ДОСТАВКИ INTEGER NOT NULL PRIMERY KEY,"
-            "ID_СКЛАДУ "
+    QSqlQuery suplierQuery;
 
-    QSqlQuery createDBQuery;
-    if (!createDBQuery.exec(createSuplierTable))
+    if (!suplierQuery.exec(createSuplierTableQuery))
     {
-        qDebug()<<"error when creating table";
+        qDebug()<<"error creating suplier table";
     }
-    addValues(1,"bob", "fredricksen", "01-01-1984", 99);
-    addValues(2,"fred", "bobricksen", "02-02-1985", 76);
+//////////////////////////////////////////////////////////////////////////////
+    auto createCellTableQuery =
+            "CREATE TABLE КОМІРКА"
+            "("
+            "ID_КОМІРКИ INTEGER NOT NULL,"
+            "ID_СКЛАДУ INTEGER NOT NULL,"
+            "ID_ТОВАРУ INTEGER NOT NULL,"
+            "КІЛЬКІСТЬ_ТОВАРУ INTEGER DEFAULT 0,"
+            "PRIMARY KEY (ID_КОМІРКИ),"
+            "FOREIGN KEY (ID_СКЛАДУ) REFERENCES СКЛАД(ID_СКЛАДУ) ON UPDATE CASCADE,"
+            "FOREIGN KEY (ID_ТОВАРУ) REFERENCES ТОВАР(ID_ТОВАРУ) ON UPDATE CASCADE"
+            ");";
+
+    QSqlQuery cellQuery;
+
+    if (!cellQuery.exec(createCellTableQuery))
+    {
+        qDebug()<<"error creating cell table";
+    }
+///////////////////////////////////////////////////////////////////////////////
+    auto createDeliveryTableQuery =
+            "CREATE TABLE ПОСТАВКА"
+            "("
+            "ID_ПОСТАВКИ INTEGER NOT NULL,"
+            "ID_ПОСТАЧАЛЬНИКА INTEGER NOT NULL,"
+            "ID_КОМІРКИ INTEGER NOT NULL,"
+            "КІЛЬКІСТЬ_ТОВАРУ INTEGER NOT NULL,"
+            "СТАН VARCHAR(20),"
+            "PRIMARY KEY (ID_ПОСТАВКИ),"
+            "FOREIGN KEY (ID_ПОСТАЧАЛЬНИКА) REFERENCES ПОСТАЧАЛЬНИК(ID_ПОСТАЧАЛЬНИКА) ON UPDATE CASCADE,"
+            "FOREIGN KEY (ID_КОМІРКИ) REFERENCES КОМІРКА(ID_КОМІРКИ) ON UPDATE CASCADE"
+            ");";
+
+    QSqlQuery deliveryQuery;
+
+    if (!deliveryQuery.exec(createDeliveryTableQuery))
+    {
+        qDebug()<<"error creating devilery table";
+    }
+///////////////////////////////////////////////////////////////////////////////
     w.dB().close();
     w.show();
 
