@@ -18,18 +18,44 @@ int main(int argc, char *argv[])
         qDebug()<<"Problem with opening DB";
     }
 
-    auto createSuplierTable =
+    auto createGoodsTable =
             "CREATE TABLE ТОВАР"
             "("
-            "ID INTEGER NOT NULL PRIMERY KEY,"
+            "ID_ТОВАРУ INTEGER NOT NULL,"
             "НАЗВА VARCHAR(30) NOT NULL,"
             "ДАТА_ВИГОТОВЛЕННЯ DATETIME,"
-            "ТЕРМІН_ПРИДАТНОСТІ DATETIME,"
+            "ТЕРМІН_ПРИДАТНОСТІ DATE,"
             "ВАГА DOUBLE,"
             "ЯКІСТЬ VARCHAR(30),"
-            "ОПИС VARCHAR(100);";
+            "ОПИС VARCHAR(100)"
+            "PRIMARY KEY (ID_ТОВАРУ)"
+            ");";
 
-    auto
+    auto createStorageTable =
+            "("
+            "ID_СКЛАДУ INTEGER NOT NULL,"
+            "АДРЕСА_МІСТО  VARCHAR(20) NOT NULL,"
+            "АДРЕСА_ВУЛИЦЯ VARCHAR(20) NOT NULL,"
+            "АДРЕСА_НОМЕР  VARCHAR(5)  NOT NULL,"
+            "КІЛЬКІСТЬ_КОМІРОК INT,"
+            "ПЛОЩА DOUBLE,"
+            "PRIMARY KEY (ID_СКЛАДУ)"
+            ")"
+            ;
+
+    auto createSuplierTable =
+            "("
+            "ID_ПОСТАЧАЛЬНИКА INTEGER NOT NULL,"
+            "НАЗВА VARCHAR(30) NUT NULL,"
+            "ДАТА_УКЛАДЕННЯ_ДОГОВОРУ DATE"
+            "РЕЙТИНГ INTEGER,"
+            "PRIMARY KEY (ID_ПОСТАЧАЛЬНИКА)"
+            ")";
+
+    auto createDeliveryTable =
+            "("
+            "ID_ДОСТАВКИ INTEGER NOT NULL PRIMERY KEY,"
+            "ID_СКЛАДУ "
 
     QSqlQuery createDBQuery;
     if (!createDBQuery.exec(createSuplierTable))
