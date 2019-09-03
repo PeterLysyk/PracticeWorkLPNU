@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 #include<QtSql>
-#include "buildingcompanydatabasecontroler.h"
 
 namespace Ui
 {
@@ -15,7 +14,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(const QString &path, QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     QSqlDatabase& getDataBase();
 
@@ -24,7 +23,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    BuildingCompanyDataBaseControler dataBase;
+    QSqlDatabase mDataBase;
 };
 
 #endif // MAINWINDOW_H

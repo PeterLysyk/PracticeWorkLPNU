@@ -1,5 +1,5 @@
 #include "databasefunctions.h"
-#include "createtablesqueries.h"
+#include "tablescreatequeries.h"
 #include <QSqlDatabase>
 #include<iostream>
 #include <QMessageBox>

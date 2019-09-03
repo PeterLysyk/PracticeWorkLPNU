@@ -4,9 +4,10 @@
 #include <QString>
 #include <QWidget>
 
-void createTable(const QString &createTableQuery);
+void createTable(const QString &createTableQuery, const QString &tableName);
 void showCreationTableError(const QString &tableName, QWidget *widget);
+void showCreationTableError(const QString &tableName, QWidget *widget);
+void createAllTablesInTheDataBase( QWidget *widget);
 void createTableWithCheck(const QString &createTableQuery, const QString &tableName, QWidget *widget);
-
 
 #endif // DATABASEFUNCTIONS_H

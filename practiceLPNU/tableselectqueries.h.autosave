@@ -1,0 +1,5 @@
+#ifndef TABLESELECTQUERIES_H
+#define TABLESELECTQUERIES_H
+
+const QString 
+#endif // TABLESELECTQUERIES_H
