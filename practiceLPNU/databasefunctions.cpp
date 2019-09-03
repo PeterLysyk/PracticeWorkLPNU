@@ -1,4 +1,5 @@
 #include "databasefunctions.h"
+#include "createtablesqueries.h"
 #include <QSqlDatabase>
 #include<iostream>
 #include <QMessageBox>
@@ -41,4 +42,16 @@ void createTableWithCheck(const QString &createTableQuery, const QString &tableN
         return;
     }
     showCreationTableSuccess(tableName, widget);
+}
+
+void createAllTablesInTheDataBase(QWidget *widget)
+{
+    qDebug()<<"Creation with check start";
+    createTableWithCheck(createSuplierTableQuery, "ПОСТАЧАЛЬНИК", widget);
+    createTableWithCheck(createStorageTableQuery, "СКЛАД", widget);
+    createTableWithCheck(createConstructionObjectTableQuery, "БУДІВЛЬНИЙ_ОБЄКТ", widget);
+    createTableWithCheck(createMaterialTableQuery, "МАТЕРІАЛ", widget);
+    createTableWithCheck(createDeliveryTableQuery, "ПОСТАВКА", widget);
+    createTableWithCheck(createsSlotTableQuery, "СЛОТ", widget);
+    createTableWithCheck(createUsingTableQuery, "ВИКОРИСТАННЯ", widget);
 }

@@ -14,20 +14,6 @@ BuildingCompanyDataBaseControler::BuildingCompanyDataBaseControler(const QString
     setDatabaseName(path);
 }
 
-void BuildingCompanyDataBaseControler::openDataBase()
-{
-    qDebug()<<"open fucntion";
-
-    /*this->setDatabaseName("C:/Users/Petro/Desktop/db.sqlite");
-    this->open();
-    this->addDatabase("QSQLITE");*/
-
-    if (!this->isOpen())
-    {
-        throw std::runtime_error("Could not open data base!");
-    }
-}
-
 BuildingCompanyDataBaseControler::~BuildingCompanyDataBaseControler() = default;
 
 QString BuildingCompanyDataBaseControler::getDBpath() const
