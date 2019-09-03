@@ -24,6 +24,13 @@ int main(int argc, char *argv[])
                              QString("Не вдалось відкрити базу даних"));
     }
 
+    try
+    {
+        mainWindow->getDataBase().crea
+    }
+    catch () {
+        
+    }
 //    auto db = QSqlDatabase::addDatabase("QSQLITE");
 //    db.setDatabaseName("C:/Users/Petro/Desktop/db.sqlite");
 //    bool isOpened = db.isOpen();
