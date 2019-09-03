@@ -25,10 +25,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        buildingcompanydatabasecontroler.cpp \
+        databasefunctions.cpp \
         main.cpp \
         mainwindow.cpp
 
 HEADERS += \
+        buildingcompanydatabasecontroler.h \
+        createtablesqueries.h \
+        databasefunctions.h \
         mainwindow.h
 
 FORMS += \

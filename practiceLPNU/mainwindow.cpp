@@ -21,7 +21,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    mDB.open();
     auto model = std::make_shared<QSqlQueryModel>();
     auto model1 = new QSqlQueryModel();
     //auto query = new QSqlQuery();
@@ -35,14 +34,6 @@ void MainWindow::on_pushButton_clicked()
     ui->tableView->setVisible(true);
 
     qDebug()<<"row count ="<<model1->rowCount();
-    mDB.close();
-
-}
-
-
-QSqlDatabase& MainWindow::dB()
-{
-    return mDB;
 }
 
 
