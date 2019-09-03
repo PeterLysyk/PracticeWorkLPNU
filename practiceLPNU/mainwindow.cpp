@@ -7,8 +7,8 @@
 #include<iostream>
 #include <memory>
 #include<QAbstractTableModel>
-MainWindow::MainWindow(const QString &path, QWidget *parent) :
-    QMainWindow(parent), dataBase(path),
+MainWindow::MainWindow(QWidget *parent):
+    QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -21,7 +21,7 @@ MainWindow::~MainWindow()
 
 QSqlDatabase& MainWindow::getDataBase()
 {
-    return dataBase;
+    return mDataBase;
 }
 
 void MainWindow::on_pushButton_clicked()

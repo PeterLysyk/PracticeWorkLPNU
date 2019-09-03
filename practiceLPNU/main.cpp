@@ -1,64 +1,58 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include<QDebug>
-#include<iostream>
 #include <QString>
-#include<QMessageBox>
-#include"buildingcompanydatabasecontroler.h"
+#include "createtablesqueries.h"
+#include"databasefunctions.h"
 
 void addValues(int id, QString firstName, QString lastName, QString birthDate, double weight);
 
 int main(int argc, char *argv[])
 {
-    //QApplication application(argc, argv);
-    QApplication application(argc, argv);
-   // MainWindow mainWindow("C:/Users/Petro/Desktop/db.sqlite");
-    auto mainWindow = std::make_unique<MainWindow>("C:/Users/Petro/Desktop/db.sqlite");
-    mainWindow->getDataBase() = QSqlDatabase::addDatabase("QSQLITE");
-    mainWindow->getDataBase().open();
+    QApplication a(argc, argv);
+    MainWindow *w = new MainWindow;
+    w->getDataBase() = QSqlDatabase::addDatabase("QSQLITE");
 
-    if (!(mainWindow->getDataBase().isOpen()))
+    w->getDataBase().setDatabaseName("C:/Users/Petro/Desktop/db.sqlite");
+    w->getDataBase().open();
+
+    if (!w->getDataBase().isOpen())
     {
-        QMessageBox::information(mainWindow.get(),
-                             QString("Проблема!"),
-                             QString("Не вдалось відкрити базу даних"));
+        qDebug()<<"Problem with opening DB";
     }
 
-//    auto db = QSqlDatabase::addDatabase("QSQLITE");
-//    db.setDatabaseName("C:/Users/Petro/Desktop/db.sqlite");
-//    bool isOpened = db.isOpen();
-//    qDebug()<<"is opened = "<<isOpened;
-   /* auto dbControler =
-            std::make_unique<BuildingCompanyDataBaseControler>("C:/Users/Petro/Desktop/db.sqlite");
+//    QString createTestBaseQuery = "CREATE TABLE TESTBASE ("
+//                    "ID INTEGER,"
+//                    "FIRSTNAME VARCHAR(20),"
+//                    "LASTNAME VARCHAR(20),"
+//                    "BIRTHDATE DATETIME,"
+//                    "WEIGHT DOUBLE);";
 
-    try
-    {
-        dbControler->openDataBase();
-    }
-    catch (std::runtime_error)
-    {
-        QMessageBox::information(mainWindow.get(),
-                                 "Помилка відкриття",
-                                 "База даних уже вікрита або її не існує!");
-    }
-    dbControler->createAllTablesInTheDataBase(mainWindow.get());*/
-    mainWindow->show();
-    return application.exec();
+//    QSqlQuery createDBQuery;
+
+    createAllTablesInTheDataBase(w);
+
+//    if (!createDBQuery.exec(createTestBaseQuery))
+//    {
+//        qDebug()<<"error when creating table";
+//    }
+    w->getDataBase().close();
+    w->show();
+
+    return a.exec();
 }
 
 void addValues(int id, QString firstName, QString lastName, QString birthDate, double weight)
 {
     QSqlQuery qry;
 
-    qry.prepare("INSERT INTO TESTBASE "
-                "("
+    qry.prepare("INSERT INTO TESTBASE ("
                 "ID,"
                 "FIRSTNAME,"
                 "LASTNAME,"
                 "BIRTHDATE,"
                 "WEIGHT)"
-                "VALUES (?,?,?,?,?"
-                ");");
+                "VALUES (?,?,?,?,?);");
 
     qry.addBindValue(id);
     qry.addBindValue(firstName);
