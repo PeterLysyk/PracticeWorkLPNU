@@ -1,12 +1,16 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include<QDebug>
+#include<iostream>
 #include <QString>
+#include<QMessageBox>
+#include"buildingcompanydatabasecontroler.h"
 
 void addValues(int id, QString firstName, QString lastName, QString birthDate, double weight);
 
 int main(int argc, char *argv[])
 {
+    //QApplication application(argc, argv);
     QApplication a(argc, argv);
     MainWindow w;
     w.getDataBase() = QSqlDatabase::addDatabase("QSQLITE");
@@ -17,144 +21,29 @@ int main(int argc, char *argv[])
     {
         qDebug()<<"Problem with opening DB";
     }
-///////////////////////////////////////////////////////////////////////////////
-    auto createSuplierTableQuery =
-            "CREATE TABLE ПОСТАЧАЛЬНИК"
-            "("
-            "ID_ПОСТАЧАЛЬНИКА INTEGER NOT NULL,"
-            "НАЗВА VARCHAR(30) NOT NULL,"
-            "ДАТА_УКЛАДЕННЯ_ДОГОВОРУ DATE"
-            "РЕЙТИНГ INTEGER,"
-            "PRIMARY KEY (ID_ПОСТАЧАЛЬНИКА)"
-            ");";
+//    auto mainWindow = std::make_unique<MainWindow>();
 
-    QSqlQuery suplierQuery;
+//    auto db = QSqlDatabase::addDatabase("QSQLITE");
+//    db.setDatabaseName("C:/Users/Petro/Desktop/db.sqlite");
+//    bool isOpened = db.isOpen();
 
-    if (!suplierQuery.exec(createSuplierTableQuery))
+//    qDebug()<<"is opened = "<<isOpened;
+   /* auto dbControler =
+            std::make_unique<BuildingCompanyDataBaseControler>("C:/Users/Petro/Desktop/db.sqlite");
+
+    try
     {
-        qDebug()<<"error creating suplier table";
+        dbControler->openDataBase();
     }
-///////////////////////////////////////////////////////////////////////////////
-    auto createStorageTableQuery =
-            "CREATE TABLE СКЛАД"
-            "("
-            "ID_СКЛАДУ INTEGER NOT NULL,"
-            "АДРЕСА_МІСТО  VARCHAR(20),"
-            "АДРЕСА_ВУЛИЦЯ VARCHAR(20),"
-            "АДРЕСА_НОМЕР  VARCHAR(5),"
-            "ПЛОЩА DOUBLE,"
-            "PRIMARY KEY (ID_СКЛАДУ)"
-            ");";
-
-    QSqlQuery storageQuery;
-
-    if (!storageQuery.exec(createStorageTableQuery))
+    catch (std::runtime_error)
     {
-        qDebug()<<"error creating storage table";
+        QMessageBox::information(mainWindow.get(),
+                                 "Помилка відкриття",
+                                 "База даних уже вікрита або її не існує!");
     }
-////////////////////////////////////////////////////////////////////////////////
-    auto createConstructionObjectTableQuery =
-            "CREATE TABLE БУДІВЛЬНИЙ_ОБЄКТ"
-            "("
-            "ID_ОБЄКТУ INTEGER NOT NULL,"
-            "АДРЕСА_МІСТО  VARCHAR(20),"
-            "АДРЕСА_ВУЛИЦЯ VARCHAR(20),"
-            "АДРЕСА_НОМЕР  VARCHAR(5),"
-            "ПРІОРИТЕТНІСТЬ INTEGER,"
-            "ДАТА_ПОЧАТКУ_БУДІВНИЦТВА DATE,"
-            "PRIMARY KEY (ID_ОБЄКТУ)"
-            ");";
-
-    QSqlQuery constructionObjectQuery;
-
-    if (!constructionObjectQuery.exec(createConstructionObjectTableQuery))
-    {
-        qDebug()<<"error creating constionObject table";
-    }
-////////////////////////////////////////////////////////////////////////////////
-    auto createMaterialTableQuery =
-            "CREATE TABLE МАТЕРІАЛ"
-            "("
-            "ID_МАТЕРІАЛУ INTEGER NOT NULL,"
-            "НАЗВА VARCHAR(30) NOT NULL,"
-            "ДАТА_ВИГОТОВЛЕННЯ DATE,"
-            "ТЕРМІН_ПРИДАТНОСТІ DATE,"
-            "ВАГА DOUBLE,"
-            "ЯКІСТЬ VARCHAR(30),"
-            "ОПИС VARCHAR(100),"
-            "PRIMARY KEY (ID_МАТЕРІАЛУ)"
-            ");";
-
-    QSqlQuery materialQuery;
-
-    if (!materialQuery.exec(createMaterialTableQuery))
-    {
-        qDebug()<<"error creating matherial table";
-    }
-/////////////////////////////////////////////////////////////////////////////////
-    auto createDeliveryTableQuery =
-            "CREATE TABLE ПОСТАВКА"
-            "("
-            "ID_ПОСТАВКИ INTEGER NOT NULL,"
-            "ID_ПОСТАЧАЛЬНИКА INTEGER NOT NULL,"
-            "ID_МАТЕРІАЛУ INTEGER NOT NULL,"
-            "СТАН VARCHAR(20),"
-            "PRIMARY KEY (ID_ПОСТАВКИ),"
-            "FOREIGN KEY (ID_ПОСТАЧАЛЬНИКА) REFERENCES ПОСТАЧАЛЬНИК(ID_ПОСТАЧАЛЬНИКА) ON UPDATE CASCADE,"
-            "FOREIGN KEY (ID_МАТЕРІАЛУ) REFERENCES МАТЕРІАЛ(ID_МАТЕРІАЛУ) ON UPDATE CASCADE"
-            ");";
-
-    QSqlQuery deliveryQuery;
-
-    if (!deliveryQuery.exec(createDeliveryTableQuery))
-    {
-        qDebug()<<"error creating devilery table";
-    }
-/////////////////////////////////////////////////////////////////////////////////
-    auto createsSlotTableQuery =
-            "CREATE TABLE СЛОТ"
-            "("
-            "ID_СЛОТА INTEGER NOT NULL,"
-            "ID_СКЛАДУ INTEGER NOT NULL,"
-            "ID_МАТЕРІАЛУ INTEGER NOT NULL,"
-            "КІЛЬКІСТЬ_МАТЕРІАЛУ INTEGER DEFAULT 0,"
-            "PRIMARY KEY (ID_СЛОТА),"
-            "FOREIGN KEY (ID_СКЛАДУ) REFERENCES СКЛАД(ID_СКЛАДУ) ON UPDATE CASCADE,"
-            "FOREIGN KEY (ID_МАТЕРІАЛУ) REFERENCES МАТЕРІАЛ(ID_МАТЕРІАЛУ) ON UPDATE CASCADE"
-            ");";
-
-    QSqlQuery slotQuery;
-
-    if (!slotQuery.exec(createsSlotTableQuery))
-    {
-        qDebug()<<"error creating cell table";
-    }
-//////////////////////////////////////////////////////////////////////////////////
-    auto createUsingTableQuery =
-            "CREATE TABLE ВИКОРИСТАННЯ"
-            "("
-            "ID_ВИКОРИСТАННЯ INTEGER NOT NULL,"
-            "ID_ОБЄКТУ INTEGER NOT NULL,"
-            "ID_СЛОТА INTEGER NOT NULL,"
-            "ДАТА_ВИКОРИСТАННЯ DATE,"
-            "PRIMARY KEY (ID_ВИКОРИСТАННЯ),"
-            "FOREIGN KEY (ID_ОБЄКТУ) REFERENCES БУДІВЛЬНИЙ_ОБЄКТ(ID_ОБЄКТУ) ON UPDATE CASCADE,"
-            "FOREIGN KEY (ID_СЛОТА) REFERENCES СЛОТ(ID_СЛОТА) ON UPDATE CASCADE"
-            ");";
-
-    QSqlQuery usingQuery;
-
-    if (!usingQuery.exec(createUsingTableQuery))
-    {
-        qDebug()<<"error creating using table";
-    }
-/////////////////////////////////////////////////////////////////////////////////
-
-
-    w.getDataBase().close();
-    w.show();
-
-    return a.exec();
+    dbControler->createAllTablesInTheDataBase(mainWindow.get());*/
+    mainWindow->show();
+    return application.exec();
 }
 
 void addValues(int id, QString firstName, QString lastName, QString birthDate, double weight)
