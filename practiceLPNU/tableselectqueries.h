@@ -1,4 +1,7 @@
-#ifndef TABLESRECORDSGETTER_H
-#define TABLESRECORDSGETTER_H
+#ifndef TABLESELECTQUERIES_H
+#define TABLESELECTQUERIES_H
+#include <QString>
 
-#endif // TABLESRECORDSGETTER_H
+//const QString selectSuplierTableQuery =
+  //      ""
+#endif // TABLESELECTQUERIES_H

@@ -1,9 +1,10 @@
 #include "mainwindow.h"
 #include <QApplication>
-#include<QDebug>
+#include <QDebug>
 #include <QString>
 #include "tablescreatequeries.h"
-#include"databasefunctions.h"
+#include "tablerecordaddqueries.h"
+#include "databasefunctions.h"
 
 int main(int argc, char *argv[])
 {
@@ -18,11 +19,14 @@ int main(int argc, char *argv[])
     {
         qDebug()<<"Problem with opening DB";
     }
-    createAllTablesInTheDataBase(w);
+    //createAllTablesInTheDataBase();
 
-
+    addRecordToTableQuery(addRecordToMaterialTableQuery,
+                          "МАТЕРІАЛ",
+                          1, "Цемент","05-05-2015" , "05-05-2015", 20.3, 5, "Добра", "good");
     w->getDataBase().close();
     w->show();
 
     return a.exec();
 }
+

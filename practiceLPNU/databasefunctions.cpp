@@ -1,6 +1,7 @@
 #include "databasefunctions.h"
 #include "tablescreatequeries.h"
 #include "tableselectqueries.h"
+#include "tablerecordaddqueries.h"
 #include <QSqlDatabase>
 #include<iostream>
 #include <QMessageBox>
@@ -12,8 +13,10 @@ void createTable(const QString &createTableQuery, const QString &tableName)
     QSqlQuery creatingQuery;
     if (!creatingQuery.exec(createTableQuery))
     {
-        throw std::runtime_error((tableName).toStdString());
+        showCreationTableError(tableName);
+        return;
     }
+    showCreationTableSuccess(tableName);
 }
 
 void showCreationTableError(const QString &tableName, QWidget *widget)
@@ -48,85 +51,114 @@ void showAddingRecordSuccess(const QString &tableName, QWidget *widget)
                 QString("Запис був успішно доданий до таблиці " + tableName));
 }
 
-void createAllTablesInTheDataBase(QWidget *widget)
+void createAllTablesInTheDataBase()
 {
-    createTableWithCheck(createSuplierTableQuery, "ПОСТАЧАЛЬНИК", widget);
-    createTableWithCheck(createStorageTableQuery, "СКЛАД", widget);
-    createTableWithCheck(createConstructionObjectTableQuery, "БУДІВЛЬНИЙ_ОБЄКТ", widget);
-    createTableWithCheck(createMaterialTableQuery, "МАТЕРІАЛ", widget);
-    createTableWithCheck(createDeliveryTableQuery, "ПОСТАВКА", widget);
-    createTableWithCheck(createsSlotTableQuery, "СЛОТ", widget);
-    createTableWithCheck(createUsingTableQuery, "ВИКОРИСТАННЯ", widget);
+    createTable(createSuplierTableQuery, "ПОСТАЧАЛЬНИК");
+    createTable(createStorageTableQuery, "СКЛАД");
+    createTable(createConstructionObjectTableQuery, "БУДІВЛЬНИЙ_ОБЄКТ");
+    createTable(createMaterialTableQuery, "МАТЕРІАЛ");
+    createTable(createDeliveryTableQuery, "ПОСТАВКА");
+    createTable(createsSlotTableQuery, "СЛОТ");
+    createTable(createUsingTableQuery, "ПОСТАЧАЛЬНИК");
 }
 
-void createTableWithCheck(const QString &createTableQuery, const QString &tableName, QWidget *widget)
+void addRecordToSuplierTable(const int idSuplier,
+                             const QString name,
+                             const QString contractSignatureDate,
+                             const int rate)
 {
-    try
+    QSqlQuery addSuplierRecordQuery;
+
+    addSuplierRecordQuery.prepare(addRecordToSuplierTableQuery);
+
+    addSuplierRecordQuery.addBindValue(idSuplier);
+    addSuplierRecordQuery.addBindValue(name);
+    addSuplierRecordQuery.addBindValue
+            (QDateTime::fromString(contractSignatureDate,"dd-mm-yyyy"));
+    addSuplierRecordQuery.addBindValue(rate);
+
+    if (!addSuplierRecordQuery.exec())
     {
-        createTable(createTableQuery, tableName);
-    }
-    catch(const std::runtime_error &re)
-    {
-        showCreationTableError(re.what(), widget);
+        showAddingRecordError("ПОСТАЧАЛЬНИК");
         return;
     }
-    showCreationTableSuccess(tableName, widget);
-}
-
-void addRecordToSuplierTable(const int &idSuplier,
-                             const QString &name,
-                             const QString &contractSignatureDate,
-                             const int &rate)
-{
-    QSqlQuery addRecordToSuplierTableQuery;
-    addRecordToSuplierTableQuery.prepare(createSuplierTableQuery);
-
-    addRecordToSuplierTableQuery.addBindValue(idSuplier);
-    addRecordToSuplierTableQuery.addBindValue(name);
-    addRecordToSuplierTableQuery.addBindValue
-            (QDateTime::fromString(contractSignatureDate, "yyyy-mm-dd"));
-    addRecordToSuplierTableQuery.addBindValue(rate);
-
-    if (!addRecordToSuplierTableQuery.exec())
-    {
-        showAddingRecordError("ПОСТАЧАЛЬНИК", nullptr);
-        return;
-    }
-    showAddingRecordSuccess("ПОСТАЧАЛЬНИК", nullptr);
+    showAddingRecordSuccess("ПОСТАЧАЛЬНИК");
 }
 
 void addRecordToStorageTable(
-         const int &idStorage,
-         const QString &cityAdress,
-         const QString &streetAdress,
-         const QString &buildingAdress,
-         const double &square)
+         const int idStorage,
+         const QString cityAdress,
+         const QString streetAdress,
+         const QString buildingAdress,
+         const double square)
 {
+    QSqlQuery addStorageRecordQuery;
 
+    addStorageRecordQuery.prepare(addRecordToStorageTableQuery);
+
+    addStorageRecordQuery.addBindValue(idStorage);
+    addStorageRecordQuery.addBindValue(cityAdress);
+    addStorageRecordQuery.addBindValue(streetAdress);
+    addStorageRecordQuery.addBindValue(buildingAdress);
+    addStorageRecordQuery.addBindValue(square);
+
+    if (!addStorageRecordQuery.exec())
+    {
+        showAddingRecordError("СКЛАД");
+        return;
+    }
+    showAddingRecordSuccess("СКЛАД");
 }
 
 void addRecordToConstructionObjectTable(
-         const int &idConstructionObject,
-         const QString &cityAdress,
-         const QString &streetAdress,
-         const QString &buildingAdress,
-         const int &priority,
-         const QString &buildingStartDate)
+         const int idConstructionObject,
+         const QString cityAdress,
+         const QString streetAdress,
+         const QString buildingAdress,
+         const int priority,
+         const QString buildingStartDate)
 {
+    QSqlQuery addConstructionOnjectRecordQuery;
 
+    addConstructionOnjectRecordQuery.prepare(addRecordToConstructionObjectTableQuery);
+
+    addConstructionOnjectRecordQuery.addBindValue(idConstructionObject);
+    addConstructionOnjectRecordQuery.addBindValue(cityAdress);
+    addConstructionOnjectRecordQuery.addBindValue(streetAdress);
+    addConstructionOnjectRecordQuery.addBindValue(buildingAdress);
+    addConstructionOnjectRecordQuery.addBindValue(priority);
+    addConstructionOnjectRecordQuery.addBindValue(buildingStartDate);
+
+    if (!addConstructionOnjectRecordQuery.exec())
+    {
+        showAddingRecordError("БУДІВЕЛЬНИЙ_ОБЄКТ");
+        return;
+    }
+    showAddingRecordSuccess("БУДІВЕЛЬНИЙ_ОБЄКТ");
 }
 
 void addRecordToMaterialTable(
-         const int &idMaterial,
-         const QString &name,
-         const QString &madeDate,
-         const QString &expirationDate,
-         const double &weight,
-         const int &count,
-         const QString &quality,
-         const QString &description)
+         const int idMaterial,
+         const QString name,
+         const QString madeDate,
+         const QString expirationDate,
+         const double weight,
+         const int count,
+         const QString quality,
+         const QString description)
 {
+    QSqlQuery addMaterialRecordQuery;
 
+    addMaterialRecordQuery.prepare(addRecordToMaterialTableQuery);
+
+    addMaterialRecordQuery.addBindValue(idMaterial);
+    addMaterialRecordQuery.addBindValue(name);
+    addMaterialRecordQuery.addBindValue(madeDate);
+    addMaterialRecordQuery.addBindValue(expirationDate);
+    addMaterialRecordQuery.addBindValue(weight);
+    addMaterialRecordQuery.addBindValue(count);
+    addMaterialRecordQuery.addBindValue(quality);
+    addMaterialRecordQuery.addBindValue(description);
 }
 
 void addRecordToDeliveryTable(
