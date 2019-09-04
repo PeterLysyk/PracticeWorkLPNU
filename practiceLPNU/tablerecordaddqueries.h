@@ -47,7 +47,7 @@ const QString addRecordToMaterialTableQuery =
         "ЯКІСТЬ,"
         "ОПИС"
         ")"
-        "VALUES(?,?,?,?,?,?,?);";
+        "VALUES(?,?,?,?,?,?,?,?);";
 
 const QString addRecordToDeliveryTableQuery =
         "INSERT INTO ПОСТАВКА"
@@ -70,7 +70,7 @@ const QString addRecordToSlotTableQuery =
         "VALUES(?,?,?,?);";
 
 const QString addRecordToUsingTableQuery =
-        "INERT INTO ВИКОРИСТАННЯ"
+        "INSERT INTO ВИКОРИСТАННЯ"
         "("
         "ID_ВИКОРИСТАННЯ,"
         "ID_ОБЄКТУ,"
