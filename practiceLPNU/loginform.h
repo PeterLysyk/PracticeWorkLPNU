@@ -4,7 +4,8 @@
 #include <QWidget>
 #include <QString>
 
-namespace Ui {
+namespace Ui
+{
 class LoginForm;
 }
 
@@ -16,12 +17,12 @@ public:
     explicit LoginForm(QWidget *parent = nullptr);
     ~LoginForm();
     bool isCorrectAccessData();
-
-private slots:
-    void on_LoginButton_clicked();
+    void setCurrentPassword(const QString &value);
 
 private:
+    void setStartsInsteadOfPassord();
     Ui::LoginForm *ui;
+    QString currentPassword;
 };
 
 #endif // LOGINFORM_H
