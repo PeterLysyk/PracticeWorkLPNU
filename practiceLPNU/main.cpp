@@ -2,6 +2,7 @@
 #include <QApplication>
 #include <QDebug>
 #include <QString>
+#include<iostream>
 #include "tablescreatequeries.h"
 #include "tablerecordaddqueries.h"
 #include "databasefunctions.h"

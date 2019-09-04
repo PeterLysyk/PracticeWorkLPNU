@@ -7,7 +7,6 @@
 #include <QMessageBox>
 #include<QtSql>
 
-
 void createTable(const QString &createTableQuery, const QString &tableName)
 {
     QSqlQuery creatingQuery;
@@ -152,7 +151,6 @@ void addRecordToMaterialTable(
 
     addMaterialRecordQuery.prepare(addRecordToMaterialTableQuery);
 
-    qDebug()<<"here";
     addMaterialRecordQuery.addBindValue(idMaterial);
     addMaterialRecordQuery.addBindValue(name);
     addMaterialRecordQuery.addBindValue(QDateTime::fromString(madeDate,"dd-mm-yyyy"));
