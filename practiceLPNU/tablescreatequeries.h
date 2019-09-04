@@ -43,7 +43,7 @@ const QString createMaterialTableQuery =
         "ДАТА_ВИГОТОВЛЕННЯ DATE,"
         "ТЕРМІН_ПРИДАТНОСТІ DATE,"
         "ВАГА DOUBLE,"
-        "КІЛЬКІСТЬ INTEGER"
+        "КІЛЬКІСТЬ INTEGER,"
         "ЯКІСТЬ VARCHAR(30),"
         "ОПИС VARCHAR(100),"
         "PRIMARY KEY (ID_МАТЕРІАЛУ)"
