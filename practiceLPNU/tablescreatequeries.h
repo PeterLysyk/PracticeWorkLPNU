@@ -7,7 +7,7 @@ const QString createSuplierTableQuery =
         "("
         "ID_ПОСТАЧАЛЬНИКА INTEGER NOT NULL,"
         "НАЗВА VARCHAR(30) NOT NULL,"
-        "ДАТА_УКЛАДЕННЯ_ДОГОВОРУ DATE"
+        "ДАТА_УКЛАДЕННЯ_ДОГОВОРУ DATE,"
         "РЕЙТИНГ INTEGER,"
         "PRIMARY KEY (ID_ПОСТАЧАЛЬНИКА)"
         ");";
@@ -43,6 +43,7 @@ const QString createMaterialTableQuery =
         "ДАТА_ВИГОТОВЛЕННЯ DATE,"
         "ТЕРМІН_ПРИДАТНОСТІ DATE,"
         "ВАГА DOUBLE,"
+        "КІЛЬКІСТЬ INTEGER"
         "ЯКІСТЬ VARCHAR(30),"
         "ОПИС VARCHAR(100),"
         "PRIMARY KEY (ID_МАТЕРІАЛУ)"
