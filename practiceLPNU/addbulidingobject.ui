@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Додати запис до таблиці БУДІВЕЛЬНИЙ ОБ'ЄКТ</string>
+   <string>БУДІВЕЛЬНИЙ ОБ'ЄКТ</string>
   </property>
   <widget class="QPushButton" name="AddBuildObjectButton">
    <property name="geometry">

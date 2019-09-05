@@ -44,6 +44,7 @@ MainWindow::MainWindow(QWidget *parent):
 MainWindow::~MainWindow()
 {
     delete ui;
+    mDataBase.close();
 }
 
 QSqlDatabase& MainWindow::getDataBase()

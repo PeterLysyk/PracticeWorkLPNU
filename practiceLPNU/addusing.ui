@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>ВИКОРИСТАННЯ</string>
   </property>
   <widget class="QLabel" name="IdUsingLabel">
    <property name="geometry">
