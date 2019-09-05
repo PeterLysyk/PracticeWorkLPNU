@@ -11,7 +11,9 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow *w = new MainWindow;
+    auto loginForm = std::make_unique<LoginForm>();
+    loginForm->show();
+    MainWindow *w = new MainWindow(loginForm.get());
     w->getDataBase() = QSqlDatabase::addDatabase("QSQLITE");
 
     w->getDataBase().setDatabaseName("C:/Users/Petro/Desktop/db.sqlite");
@@ -22,14 +24,7 @@ int main(int argc, char *argv[])
         qDebug()<<"Problem with opening DB";
     }
     w->getDataBase().close();
-    auto loginForm = std::make_unique<LoginForm>();
-    loginForm->show();
-    if (loginForm->isCorrectAccessData())
-    {
-        loginForm->close();
-        w->show();
-    }
-
+   // w->show();
     return a.exec();
 }
 

@@ -7,11 +7,13 @@
 #include<iostream>
 #include <memory>
 #include<QAbstractTableModel>
+#include"loginform.h"
 MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    connect(parent, SIGNAL(loggingWasSuccess()), this, SLOT(show()));
 }
 
 MainWindow::~MainWindow()

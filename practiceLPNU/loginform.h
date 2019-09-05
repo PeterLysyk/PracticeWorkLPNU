@@ -16,13 +16,16 @@ class LoginForm : public QWidget
 public:
     explicit LoginForm(QWidget *parent = nullptr);
     ~LoginForm();
-    bool isCorrectAccessData();
-    void setCurrentPassword(const QString &value);
+
+private slots:
+    void on_LoginButton_clicked();
+signals:
+    void loggingWasSuccess();
 
 private:
+    bool isCorrectAccessData();
     void setStartsInsteadOfPassord();
     Ui::LoginForm *ui;
-    QString currentPassword;
 };
 
 #endif // LOGINFORM_H
