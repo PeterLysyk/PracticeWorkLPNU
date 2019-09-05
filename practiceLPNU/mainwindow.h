@@ -6,6 +6,7 @@
 #include<QTabWidget>
 #include"addrecordstabwidget.h"
 #include"getrecordstabwidget.h"
+#include"getstatistictabwidget.h"
 
 namespace Ui
 {
@@ -28,6 +29,7 @@ private:
     QTabWidget *totalTabWidget;
     AddRecordsTabWidget *addRecordsTab;
     GetRecordsTabWidget *getRecordsTab;
+    GetStatisticTabWidget *getStatisticTab;
 };
 
 #endif // MAINWINDOW_H

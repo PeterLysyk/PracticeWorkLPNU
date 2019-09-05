@@ -1,0 +1,44 @@
+#include "addrecordstabwidget.h"
+#include "ui_addrecordstabwidget.h"
+
+AddRecordsTabWidget::AddRecordsTabWidget(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::addRecordsTabWidget)
+{
+    ui->setupUi(this);
+}
+
+AddRecordsTabWidget::~AddRecordsTabWidget()
+{
+    delete ui;
+}
+
+void AddRecordsTabWidget::on_BuildingObjectAddRecordButton_clicked()
+{
+    
+}
+
+void AddRecordsTabWidget::on_UsingAddRecordButton_clicked()
+{
+    
+}
+
+void AddRecordsTabWidget::on_MaterialAddRecordButton_clicked()
+{
+    
+}
+
+void AddRecordsTabWidget::on_DevileryAddRecordButton_clicked()
+{
+    
+}
+
+void AddRecordsTabWidget::on_SuplierAddRecordButton_clicked()
+{
+    
+}
+
+void AddRecordsTabWidget::on_StorageAddRecordButton_clicked()
+{
+    
+}

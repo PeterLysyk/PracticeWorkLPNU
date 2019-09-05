@@ -30,8 +30,13 @@ MainWindow::MainWindow(QWidget *parent):
     QVBoxLayout *getRecordsLayout = new QVBoxLayout;
     getRecordsLayout->addWidget(getRecordsTab);
 
+    getStatisticTab = new GetStatisticTabWidget;
+    QVBoxLayout *getStatisticLayout = new QVBoxLayout;
+    getStatisticLayout->addWidget(getStatisticTab);
+
     totalTabWidget->addTab(addRecordsTab, "Додати запис");
     totalTabWidget->addTab(getRecordsTab, "Отримати запис");
+    totalTabWidget->addTab(getStatisticTab, "Отримати статистику");
 
     setCentralWidget(totalTabWidget);
 }
@@ -52,4 +57,3 @@ void MainWindow::setDataBaseSettings(const QString &dbName, const QString &dbTyp
     mDataBase.setDatabaseName(dbName);
     mDataBase.open();
 }
-

@@ -36,6 +36,7 @@ SOURCES += \
         addusing.cpp \
         databasefunctions.cpp \
         getrecordstabwidget.cpp \
+        getstatistictabwidget.cpp \
         loginform.cpp \
         main.cpp \
         mainwindow.cpp
@@ -52,6 +53,7 @@ HEADERS += \
         addusing.h \
         databasefunctions.h \
         getrecordstabwidget.h \
+        getstatistictabwidget.h \
         loginform.h \
         mainwindow.h \
         tablerecordaddqueries.h \
@@ -68,6 +70,7 @@ FORMS += \
         addsuplier.ui \
         addusing.ui \
         getrecordstabwidget.ui \
+        getstatistictabwidget.ui \
         loginform.ui \
         mainwindow.ui
 
