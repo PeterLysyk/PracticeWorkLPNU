@@ -48,6 +48,9 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="text">
+    <string>admin</string>
+   </property>
   </widget>
   <widget class="QLabel" name="PasswordLabel">
    <property name="geometry">
@@ -70,6 +73,9 @@
      <width>221</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="text">
+    <string>admin</string>
    </property>
    <property name="echoMode">
     <enum>QLineEdit::Password</enum>

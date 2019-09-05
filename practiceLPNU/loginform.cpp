@@ -1,7 +1,7 @@
 #include "loginform.h"
 #include "ui_loginform.h"
 #include "QLineEdit"
-#include <QDebug>
+#include <QMessageBox>
 
 LoginForm::LoginForm(QWidget *parent) :
     QWidget(parent),
@@ -31,5 +31,9 @@ void LoginForm::on_LoginButton_clicked()
     {
         this->close();
         emit loggingWasSuccess();
+    }
+    else
+    {
+        QMessageBox::information(this, "Невірний логін або пароль","Перевірте правильність вводу!");
     }
 }

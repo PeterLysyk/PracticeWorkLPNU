@@ -3,17 +3,37 @@
 #include <QDebug>
 #include<QSql>
 #include<QSqlQueryModel>
+#include<QVBoxLayout>
 #include<QSqlQuery>
 #include<iostream>
 #include <memory>
 #include<QAbstractTableModel>
+#include"addrecordstabwidget.h"
+#include<QTabWidget>
 #include"loginform.h"
+
 MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     connect(parent, SIGNAL(loggingWasSuccess()), this, SLOT(show()));
+    this->setWindowTitle("Житлотехсервіс (c)");
+
+    totalTabWidget = new QTabWidget;
+
+    addRecordsTab = new AddRecordsTabWidget;
+    QVBoxLayout *addRecordsLayout = new QVBoxLayout;
+    addRecordsLayout->addWidget(addRecordsTab);
+
+    getRecordsTab = new GetRecordsTabWidget;
+    QVBoxLayout *getRecordsLayout = new QVBoxLayout;
+    getRecordsLayout->addWidget(getRecordsTab);
+
+    totalTabWidget->addTab(addRecordsTab, "Додати запис");
+    totalTabWidget->addTab(getRecordsTab, "Отримати запис");
+
+    setCentralWidget(totalTabWidget);
 }
 
 MainWindow::~MainWindow()
@@ -26,21 +46,10 @@ QSqlDatabase& MainWindow::getDataBase()
     return mDataBase;
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::setDataBaseSettings(const QString &dbName, const QString &dbType)
 {
-    auto model = std::make_shared<QSqlQueryModel>();
-    auto model1 = new QSqlQueryModel();
-    //auto query = new QSqlQuery();
-    auto query = std::make_unique<QSqlQuery>();
-    query->prepare("SELECT * FROM TESTBASE");
-    query->exec();
-    model1->setQuery(*query);
-
-    //ui->tableView->setModel(model.get());
-    ui->tableView->setModel(model1);
-    ui->tableView->setVisible(true);
-
-    qDebug()<<"row count ="<<model1->rowCount();
+    mDataBase = QSqlDatabase::addDatabase(dbType);
+    mDataBase.setDatabaseName(dbName);
+    mDataBase.open();
 }
-
 

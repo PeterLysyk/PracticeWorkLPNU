@@ -28,11 +28,14 @@ SOURCES += \
         addbulidingobject.cpp \
         adddelivery.cpp \
         addmaterial.cpp \
+        addrecordstabwidget.cpp \
+        addrecordswidget.cpp \
         addslot.cpp \
         addstorage.cpp \
         addsuplier.cpp \
         addusing.cpp \
         databasefunctions.cpp \
+        getrecordstabwidget.cpp \
         loginform.cpp \
         main.cpp \
         mainwindow.cpp
@@ -41,11 +44,14 @@ HEADERS += \
         addbulidingobject.h \
         adddelivery.h \
         addmaterial.h \
+        addrecordstabwidget.h \
+        addrecordswidget.h \
         addslot.h \
         addstorage.h \
         addsuplier.h \
         addusing.h \
         databasefunctions.h \
+        getrecordstabwidget.h \
         loginform.h \
         mainwindow.h \
         tablerecordaddqueries.h \
@@ -56,10 +62,12 @@ FORMS += \
         addbulidingobject.ui \
         adddelivery.ui \
         addmaterial.ui \
+        addrecordstabwidget.ui \
         addslot.ui \
         addstorage.ui \
         addsuplier.ui \
         addusing.ui \
+        getrecordstabwidget.ui \
         loginform.ui \
         mainwindow.ui
 
