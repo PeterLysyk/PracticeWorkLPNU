@@ -24,7 +24,6 @@ signals:
 
 private:
     bool isCorrectAccessData();
-    void setStartsInsteadOfPassord();
     Ui::LoginForm *ui;
 };
 

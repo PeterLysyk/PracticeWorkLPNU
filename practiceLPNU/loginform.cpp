@@ -19,12 +19,6 @@ bool LoginForm::isCorrectAccessData()
     return (ui->Login->text() == "admin") && (ui->Password->text() == "admin");
 }
 
-void LoginForm::setStartsInsteadOfPassord()
-{
-    ui->Password->setText(QString(ui->Password->text().length(), '*'));
-}
-
-
 void LoginForm::on_LoginButton_clicked()
 {
     if (isCorrectAccessData())

@@ -14,7 +14,6 @@ int main(int argc, char *argv[])
     QApplication application(argc, argv);
     auto loginForm = std::make_unique<LoginForm>();
     loginForm->show();
-
     auto mainWindow = std::make_unique<MainWindow>(loginForm.get());
     mainWindow->setDataBaseSettings("C:/Users/Petro/Desktop/db.sqlite", "QSQLITE");
     if (!mainWindow->getDataBase().isOpen())

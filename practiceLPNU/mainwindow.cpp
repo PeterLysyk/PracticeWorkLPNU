@@ -10,35 +10,36 @@
 #include<QAbstractTableModel>
 #include"addrecordstabwidget.h"
 #include<QTabWidget>
-#include"loginform.h"
 
-MainWindow::MainWindow(QWidget *parent):
+MainWindow::MainWindow( LoginForm *loginForm, QWidget *parent):
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    connect(parent, SIGNAL(loggingWasSuccess()), this, SLOT(show()));
     this->setWindowTitle("Житлотехсервіс (c)");
 
-    totalTabWidget = new QTabWidget;
+    mLoginForm = loginForm;
+    connect(mLoginForm, &LoginForm::loggingWasSuccess, this, &QWidget::show);
 
-    addRecordsTab = new AddRecordsTabWidget;
+    mTotalTabWidget = new QTabWidget;
+
+    mAddRecordsTab = new AddRecordsTabWidget;
     QVBoxLayout *addRecordsLayout = new QVBoxLayout;
-    addRecordsLayout->addWidget(addRecordsTab);
+    addRecordsLayout->addWidget(mAddRecordsTab);
 
-    getRecordsTab = new GetRecordsTabWidget;
+    mGetRecordsTab = new GetRecordsTabWidget;
     QVBoxLayout *getRecordsLayout = new QVBoxLayout;
-    getRecordsLayout->addWidget(getRecordsTab);
+    getRecordsLayout->addWidget(mGetRecordsTab);
 
-    getStatisticTab = new GetStatisticTabWidget;
+    mGetStatisticTab = new GetStatisticTabWidget;
     QVBoxLayout *getStatisticLayout = new QVBoxLayout;
-    getStatisticLayout->addWidget(getStatisticTab);
+    getStatisticLayout->addWidget(mGetStatisticTab);
 
-    totalTabWidget->addTab(addRecordsTab, "Додати запис");
-    totalTabWidget->addTab(getRecordsTab, "Отримати запис");
-    totalTabWidget->addTab(getStatisticTab, "Отримати статистику");
+    mTotalTabWidget->addTab(mAddRecordsTab, "Додати запис");
+    mTotalTabWidget->addTab(mGetRecordsTab, "Отримати запис");
+    mTotalTabWidget->addTab(mGetStatisticTab, "Отримати статистику");
 
-    setCentralWidget(totalTabWidget);
+    setCentralWidget(mTotalTabWidget);
 }
 
 MainWindow::~MainWindow()

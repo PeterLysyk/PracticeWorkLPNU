@@ -34,5 +34,5 @@ private:
     Ui::addRecordsTabWidget *ui;
 };
 
-void clearWidgets(QWidget *widget);
+void clearWidgetsInsideLayout(QWidget *widget);
 #endif // ADDRECORDSTABWIDGET_H

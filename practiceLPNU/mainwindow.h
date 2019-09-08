@@ -7,6 +7,7 @@
 #include"addrecordstabwidget.h"
 #include"getrecordstabwidget.h"
 #include"getstatistictabwidget.h"
+#include "loginform.h"
 
 namespace Ui
 {
@@ -18,7 +19,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(LoginForm *mLoginForm, QWidget *parent = nullptr);
     ~MainWindow();
     QSqlDatabase& getDataBase();
     void setDataBaseSettings(const QString &dbName, const QString &dbType);
@@ -26,10 +27,11 @@ public:
 private:
     Ui::MainWindow *ui;
     QSqlDatabase mDataBase;
-    QTabWidget *totalTabWidget;
-    AddRecordsTabWidget *addRecordsTab;
-    GetRecordsTabWidget *getRecordsTab;
-    GetStatisticTabWidget *getStatisticTab;
+    QTabWidget *mTotalTabWidget;
+    LoginForm *mLoginForm;
+    AddRecordsTabWidget *mAddRecordsTab;
+    GetRecordsTabWidget *mGetRecordsTab;
+    GetStatisticTabWidget *mGetStatisticTab;
 };
 
 #endif // MAINWINDOW_H

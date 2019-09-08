@@ -73,7 +73,7 @@ void addRecordToSuplierTable(const int idSuplier,
     addSuplierRecordQuery.addBindValue(idSuplier);
     addSuplierRecordQuery.addBindValue(name);
     addSuplierRecordQuery.addBindValue
-            (QDateTime::fromString(contractSignatureDate,"dd-mm-yyyy"));
+            (QDateTime::fromString(contractSignatureDate,"dd.mm.yyyy"));
     addSuplierRecordQuery.addBindValue(rate);
 
     if (!addSuplierRecordQuery.exec())
@@ -126,7 +126,9 @@ void addRecordToConstructionObjectTable(
     addConstructionOnjectRecordQuery.addBindValue(streetAdress);
     addConstructionOnjectRecordQuery.addBindValue(buildingAdress);
     addConstructionOnjectRecordQuery.addBindValue(priority);
-    addConstructionOnjectRecordQuery.addBindValue(QDateTime::fromString(buildingStartDate,"dd-mm-yyyy"));
+    qDebug()<<"Insisde bulding object. "<<"value after ( row)="<<buildingStartDate;
+    qDebug()<<"Insisde bulding object. "<<"value after (not row)="<<QDateTime::fromString(buildingStartDate,"dd.mm.yyyy");
+    addConstructionOnjectRecordQuery.addBindValue(QDateTime::fromString(buildingStartDate,"dd.mm.yyyy"));
 
     if (!addConstructionOnjectRecordQuery.exec())
     {
@@ -227,7 +229,7 @@ void addRecordToUsingTable(
     addUsingRecordTable.addBindValue(idUsing);
     addUsingRecordTable.addBindValue(idConstructionObject);
     addUsingRecordTable.addBindValue(idSlot);
-    addUsingRecordTable.addBindValue(QDateTime::fromString(usingDate,"dd-mm-yyyy"));
+    addUsingRecordTable.addBindValue(QDateTime::fromString(usingDate,"dd.mm.yyyy"));
 
     if (!addUsingRecordTable.exec())
     {

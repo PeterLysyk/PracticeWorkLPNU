@@ -10,6 +10,7 @@
 #include "addusing.h"
 #include<iostream>
 #include<QLayout>
+#include <QVBoxLayout>
 #include<memory>
 
 AddRecordsTabWidget::AddRecordsTabWidget(QWidget *parent) :
@@ -26,71 +27,71 @@ AddRecordsTabWidget::~AddRecordsTabWidget()
 
 void AddRecordsTabWidget::on_BuildingObjectAddRecordButton_clicked()
 {
-    //auto addBuldingObjectRecord = std::make_unique<AddBulidingObject>();
-    auto addBuldingObjectRecord = new AddBulidingObject(ui->recordsAdderWidget);
-    clearWidgets(ui->recordsAdderWidget);
-    addBuldingObjectRecord->show();
+    clearWidgetsInsideLayout(ui->AddObjectLayout);
+    auto obj = new AddBulidingObject(this);
+   // ui->AddObjectLayout->addWidget(obj);
+    ui->AddObjectLayout->addWidget(obj);
+    obj->setWindowModality(Qt::WindowModal);
+
+    qDebug()<<"here!";
 }
 
 void AddRecordsTabWidget::on_UsingAddRecordButton_clicked()
 {
     //auto addUsingRecord = std::make_unique<AddUsing>();
-    auto addUsingRecord = new AddUsing(ui->recordsAdderWidget);
-    clearWidgets(ui->recordsAdderWidget);
-    addUsingRecord->show();
+//    auto addUsingRecord = new AddUsing(ui->recordsAdderDocerWidget);
+//    clearWidgets(ui->recordsAdderDocerWidget);
+//    addUsingRecord->show();
 }
 
 void AddRecordsTabWidget::on_MaterialAddRecordButton_clicked()
 {
     //auto addMaterialRecord = std::make_unique<AddMaterial>();
-    auto addMaterialRecord = new AddMaterial(ui->recordsAdderWidget);
-    clearWidgets(ui->recordsAdderWidget);
-    addMaterialRecord->show();
+//    auto addMaterialRecord = new AddMaterial(ui->recordsAdderDocerWidget);
+//    clearWidgets(ui->recordsAdderDocerWidget);
+//    addMaterialRecord->show();
 }
 
 void AddRecordsTabWidget::on_DevileryAddRecordButton_clicked()
 {
     //auto addDeliveryRecord = std::make_unique<AddDelivery>();
     //ui->recordsAdderWidget->hide();
-    ui->recordsAdderWidget->show();
-    auto addDeliveryRecord = new AddDelivery(ui->recordsAdderWidget);
-    //clearWidgets(ui->recordsAdderWidget);
-    addDeliveryRecord->show();
+//    ui->recordsAdderDocerWidget->show();
+//    auto addDeliveryRecord = new AddDelivery(ui->recordsAdderDocerWidget);
+//    //clearWidgets(ui->recordsAdderWidget);
+//    addDeliveryRecord->show();
 }
 
 void AddRecordsTabWidget::on_SuplierAddRecordButton_clicked()
 {
-    //auto addSuplierRecord = std::make_unique<AddSuplier>();
-    auto addSuplierRecord = new AddSuplier(ui->recordsAdderWidget);
-    //clearWidgets(ui->horizontalLayout);
-    addSuplierRecord->show();
+//    //auto addSuplierRecord = std::make_unique<AddSuplier>();
+//    auto addSuplierRecord = new AddSuplier(ui->recordsAdderDocerWidget);
+//    //clearWidgets(ui->horizontalLayout);
+//    addSuplierRecord->show();
 }
 
 void AddRecordsTabWidget::on_StorageAddRecordButton_clicked()
 {
-   // auto addStorageRecord = std::make_unique<AddStorage>();
-    auto addStorageRecord = new AddStorage(ui->recordsAdderWidget);
-    clearWidgets(ui->recordsAdderWidget);
-    addStorageRecord->show();
+//   // auto addStorageRecord = std::make_unique<AddStorage>();
+//    auto addStorageRecord = new AddStorage(ui->recordsAdderDocerWidget);
+//    clearWidgets(ui->recordsAdderDocerWidget);
+//    addStorageRecord->show();
 }
 
 void AddRecordsTabWidget::on_SlotAddRecordButton_clicked()
 {
-    //auto addSlotRecord = std::make_unique<AddSlot>();
-    auto addSlotRecord = new AddSlot(this);
-    clearWidgets(ui->recordsAdderWidget);
-    addSlotRecord->show();
+//    //auto addSlotRecord = std::make_unique<AddSlot>();
+//    auto addSlotRecord = new AddSlot(this);
+//    clearWidgets(ui->recordsAdderDocerWidget);
+//    addSlotRecord->show();
 }
 
-void clearWidgets(QWidget *widget)
+void clearWidgetsInsideLayout(QVBoxLayout *layout)
 {
-    QList< QWidget* > children;
-        do
-        {
-           children = widget->findChildren< QWidget* >();
-           if (!children.count())
-               break;
-           delete children.at( 0 );
-        }
-        while ( true );
+    while(QLayoutItem *item = layout->takeAt(0))
+    {
+        Q_ASSERT(!item->layout());
+        delete item->widget();
+        delete item;
+    }
 }
