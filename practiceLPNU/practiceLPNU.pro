@@ -52,6 +52,7 @@ HEADERS += \
         addsuplier.h \
         addusing.h \
         databasefunctions.h \
+        databasetablesnames.h \
         getrecordstabwidget.h \
         getstatistictabwidget.h \
         loginform.h \

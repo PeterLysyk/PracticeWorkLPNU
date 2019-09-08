@@ -2,6 +2,7 @@
 #include "tablescreatequeries.h"
 #include "tableselectqueries.h"
 #include "tablerecordaddqueries.h"
+#include "databasetablesnames.h"
 #include <QSqlDatabase>
 #include<iostream>
 #include <QMessageBox>
@@ -52,13 +53,13 @@ void showAddingRecordSuccess(const QString &tableName, QWidget *widget)
 
 void createAllTablesInTheDataBase()
 {
-    createTable(createSuplierTableQuery, "ПОСТАЧАЛЬНИК");
-    createTable(createStorageTableQuery, "СКЛАД");
-    createTable(createConstructionObjectTableQuery, "БУДІВЛЬНИЙ_ОБЄКТ");
-    createTable(createMaterialTableQuery, "МАТЕРІАЛ");
-    createTable(createDeliveryTableQuery, "ПОСТАВКА");
-    createTable(createsSlotTableQuery, "СЛОТ");
-    createTable(createUsingTableQuery, "ПОСТАЧАЛЬНИК");
+    createTable(createSuplierTableQuery, suplierTableName);
+    createTable(createStorageTableQuery, storageTableName);
+    createTable(createConstructionObjectTableQuery, buildingObjectTableName);
+    createTable(createMaterialTableQuery, materailTableName);
+    createTable(createDeliveryTableQuery, deliveryTableName);
+    createTable(createsSlotTableQuery, slotTableName);
+    createTable(createUsingTableQuery, suplierTableName);
 }
 
 void addRecordToSuplierTable(const int idSuplier,
@@ -78,10 +79,10 @@ void addRecordToSuplierTable(const int idSuplier,
 
     if (!addSuplierRecordQuery.exec())
     {
-        showAddingRecordError("ПОСТАЧАЛЬНИК");
+        showAddingRecordError(suplierTableName);
         return;
     }
-    showAddingRecordSuccess("ПОСТАЧАЛЬНИК");
+    showAddingRecordSuccess(suplierTableName);
 }
 
 void addRecordToStorageTable(
@@ -103,10 +104,10 @@ void addRecordToStorageTable(
 
     if (!addStorageRecordQuery.exec())
     {
-        showAddingRecordError("СКЛАД");
+        showAddingRecordError(storageTableName);
         return;
     }
-    showAddingRecordSuccess("СКЛАД");
+    showAddingRecordSuccess(storageTableName);
 }
 
 void addRecordToConstructionObjectTable(
@@ -126,16 +127,14 @@ void addRecordToConstructionObjectTable(
     addConstructionOnjectRecordQuery.addBindValue(streetAdress);
     addConstructionOnjectRecordQuery.addBindValue(buildingAdress);
     addConstructionOnjectRecordQuery.addBindValue(priority);
-    qDebug()<<"Insisde bulding object. "<<"value after ( row)="<<buildingStartDate;
-    qDebug()<<"Insisde bulding object. "<<"value after (not row)="<<QDateTime::fromString(buildingStartDate,"dd.mm.yyyy");
     addConstructionOnjectRecordQuery.addBindValue(QDateTime::fromString(buildingStartDate,"dd.mm.yyyy"));
 
     if (!addConstructionOnjectRecordQuery.exec())
     {
-        showAddingRecordError("БУДІВЕЛЬНИЙ_ОБЄКТ");
+        showAddingRecordError(buildingObjectTableName);
         return;
     }
-    showAddingRecordSuccess("БУДІВЕЛЬНИЙ_ОБЄКТ");
+    showAddingRecordSuccess(buildingObjectTableName);
 }
 
 void addRecordToMaterialTable(
@@ -164,10 +163,10 @@ void addRecordToMaterialTable(
 
     if (!addMaterialRecordQuery.exec())
     {
-        showAddingRecordError("МАТЕРІАЛ");
+        showAddingRecordError(materailTableName);
         return;
     }
-    showAddingRecordSuccess("МАТЕРІАЛ");
+    showAddingRecordSuccess(materailTableName);
 }
 
 void addRecordToDeliveryTable(
@@ -187,10 +186,10 @@ void addRecordToDeliveryTable(
 
     if (!addDeliveryRecordQuery.exec())
     {
-        showAddingRecordError("ПОСТАВКА");
+        showAddingRecordError(deliveryTableName);
         return;
     }
-    showAddingRecordSuccess("ПОСТАВКА");
+    showAddingRecordSuccess(deliveryTableName);
 }
 
 void addRecordToSlotTable(
@@ -210,10 +209,10 @@ void addRecordToSlotTable(
 
     if (!addSlotRecordQuery.exec())
     {
-        showAddingRecordError("СЛОТ");
+        showAddingRecordError(slotTableName);
         return;
     }
-    showAddingRecordSuccess("СЛОТ");
+    showAddingRecordSuccess(slotTableName);
 }
 
 void addRecordToUsingTable(
@@ -233,8 +232,8 @@ void addRecordToUsingTable(
 
     if (!addUsingRecordTable.exec())
     {
-        showAddingRecordError("ВИКОРИСТАННЯ");
+        showAddingRecordError(usingTableName);
         return;
     }
-    showAddingRecordSuccess("ВИКОРИСТАННЯ");
+    showAddingRecordSuccess(usingTableName);
 }

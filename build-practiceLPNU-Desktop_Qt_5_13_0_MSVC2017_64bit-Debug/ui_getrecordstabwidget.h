@@ -11,7 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QPushButton>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -19,24 +19,16 @@ QT_BEGIN_NAMESPACE
 class Ui_GetRecordsTabWidget
 {
 public:
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_3;
+    QListWidget *TablesNamesListWidget;
 
     void setupUi(QWidget *GetRecordsTabWidget)
     {
         if (GetRecordsTabWidget->objectName().isEmpty())
             GetRecordsTabWidget->setObjectName(QString::fromUtf8("GetRecordsTabWidget"));
         GetRecordsTabWidget->resize(400, 300);
-        pushButton = new QPushButton(GetRecordsTabWidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(260, 130, 80, 21));
-        pushButton_2 = new QPushButton(GetRecordsTabWidget);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(160, 130, 80, 21));
-        pushButton_3 = new QPushButton(GetRecordsTabWidget);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        pushButton_3->setGeometry(QRect(50, 120, 80, 21));
+        TablesNamesListWidget = new QListWidget(GetRecordsTabWidget);
+        TablesNamesListWidget->setObjectName(QString::fromUtf8("TablesNamesListWidget"));
+        TablesNamesListWidget->setGeometry(QRect(10, 30, 131, 111));
 
         retranslateUi(GetRecordsTabWidget);
 
@@ -46,9 +38,6 @@ public:
     void retranslateUi(QWidget *GetRecordsTabWidget)
     {
         GetRecordsTabWidget->setWindowTitle(QCoreApplication::translate("GetRecordsTabWidget", "Form", nullptr));
-        pushButton->setText(QCoreApplication::translate("GetRecordsTabWidget", "PushButton", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("GetRecordsTabWidget", "PushButton", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("GetRecordsTabWidget", "PushButton", nullptr));
     } // retranslateUi
 
 };

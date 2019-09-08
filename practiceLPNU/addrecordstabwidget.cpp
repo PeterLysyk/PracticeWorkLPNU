@@ -10,7 +10,6 @@
 #include "addusing.h"
 #include<iostream>
 #include<QLayout>
-#include <QVBoxLayout>
 #include<memory>
 
 AddRecordsTabWidget::AddRecordsTabWidget(QWidget *parent) :
@@ -27,13 +26,18 @@ AddRecordsTabWidget::~AddRecordsTabWidget()
 
 void AddRecordsTabWidget::on_BuildingObjectAddRecordButton_clicked()
 {
-    clearWidgetsInsideLayout(ui->AddObjectLayout);
-    auto obj = new AddBulidingObject(this);
-   // ui->AddObjectLayout->addWidget(obj);
-    ui->AddObjectLayout->addWidget(obj);
-    obj->setWindowModality(Qt::WindowModal);
 
-    qDebug()<<"here!";
+
+    //auto layot = ui->AddObjectLayout->layout();
+   // clearWidgetsInsideLayout(layot);
+    clearWidgetsInsideLayout(ui->AddObjectLayout);
+
+    auto obj = new AddBulidingObject(this);
+      // ui->AddObjectLayout->addWidget(obj);
+       ui->AddObjectLayout->addWidget(obj);
+       obj->setWindowModality(Qt::WindowModal);
+
+
 }
 
 void AddRecordsTabWidget::on_UsingAddRecordButton_clicked()
@@ -88,9 +92,9 @@ void AddRecordsTabWidget::on_SlotAddRecordButton_clicked()
 
 void clearWidgetsInsideLayout(QVBoxLayout *layout)
 {
-    while(QLayoutItem *item = layout->takeAt(0))
+    while( QLayoutItem* item = layout->takeAt(0))
     {
-        Q_ASSERT(!item->layout());
+        Q_ASSERT( ! item->layout() ); // otherwise the layout will leak
         delete item->widget();
         delete item;
     }

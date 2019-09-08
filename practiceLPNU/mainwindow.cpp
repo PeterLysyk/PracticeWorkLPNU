@@ -16,7 +16,8 @@ MainWindow::MainWindow( LoginForm *loginForm, QWidget *parent):
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->setWindowTitle("Житлотехсервіс (c)");
+    this->setWindowTitle("Житлотехсервіс ©");
+    this->setWindowIcon(QIcon("C:\\Users\\Petro\\Desktop\\JitloTechico.png"));
 
     mLoginForm = loginForm;
     connect(mLoginForm, &LoginForm::loggingWasSuccess, this, &QWidget::show);
@@ -36,7 +37,7 @@ MainWindow::MainWindow( LoginForm *loginForm, QWidget *parent):
     getStatisticLayout->addWidget(mGetStatisticTab);
 
     mTotalTabWidget->addTab(mAddRecordsTab, "Додати запис");
-    mTotalTabWidget->addTab(mGetRecordsTab, "Отримати запис");
+    mTotalTabWidget->addTab(mGetRecordsTab, "Отримати запис/Видалити запис");
     mTotalTabWidget->addTab(mGetStatisticTab, "Отримати статистику");
 
     setCentralWidget(mTotalTabWidget);

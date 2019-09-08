@@ -245,6 +245,7 @@ Makefile: ..\practiceLPNU\practiceLPNU.pro ..\..\..\QT\5.13.0\msvc2017_64\mkspec
 		..\..\..\QT\5.13.0\msvc2017_64\mkspecs\features\qt_config.prf \
 		..\..\..\QT\5.13.0\msvc2017_64\mkspecs\win32-msvc\qmake.conf \
 		..\..\..\QT\5.13.0\msvc2017_64\mkspecs\features\spec_post.prf \
+		.qmake.stash \
 		..\..\..\QT\5.13.0\msvc2017_64\mkspecs\features\exclusive_builds.prf \
 		..\..\..\QT\5.13.0\msvc2017_64\mkspecs\common\msvc-version.conf \
 		..\..\..\QT\5.13.0\msvc2017_64\mkspecs\features\toolchain.prf \
@@ -443,6 +444,7 @@ Makefile: ..\practiceLPNU\practiceLPNU.pro ..\..\..\QT\5.13.0\msvc2017_64\mkspec
 ..\..\..\QT\5.13.0\msvc2017_64\mkspecs\features\qt_config.prf:
 ..\..\..\QT\5.13.0\msvc2017_64\mkspecs\win32-msvc\qmake.conf:
 ..\..\..\QT\5.13.0\msvc2017_64\mkspecs\features\spec_post.prf:
+.qmake.stash:
 ..\..\..\QT\5.13.0\msvc2017_64\mkspecs\features\exclusive_builds.prf:
 ..\..\..\QT\5.13.0\msvc2017_64\mkspecs\common\msvc-version.conf:
 ..\..\..\QT\5.13.0\msvc2017_64\mkspecs\features\toolchain.prf:

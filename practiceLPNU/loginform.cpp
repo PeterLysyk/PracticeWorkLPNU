@@ -8,6 +8,7 @@ LoginForm::LoginForm(QWidget *parent) :
     ui(new Ui::LoginForm)
 {
     ui->setupUi(this);
+    this->setWindowIcon(QIcon("C:\\Users\\Petro\\Desktop\\JitloTechico.png"));
 }
 LoginForm::~LoginForm()
 {
@@ -16,7 +17,8 @@ LoginForm::~LoginForm()
 
 bool LoginForm::isCorrectAccessData()
 {
-    return (ui->Login->text() == "admin") && (ui->Password->text() == "admin");
+    return (ui->Login->text() == "admin")
+            && (ui->Password->text() == "admin");
 }
 
 void LoginForm::on_LoginButton_clicked()
@@ -28,6 +30,8 @@ void LoginForm::on_LoginButton_clicked()
     }
     else
     {
-        QMessageBox::information(this, "Невірний логін або пароль","Перевірте правильність вводу!");
+        QMessageBox::information(this,
+                                 "Невірний логін або пароль",
+                                 "Перевірте правильність вводу!");
     }
 }
