@@ -1,6 +1,5 @@
 #include "databasefunctions.h"
 #include "tablescreatequeries.h"
-#include "tableselectqueries.h"
 #include "tablerecordaddqueries.h"
 #include "databasetablesnames.h"
 #include <QSqlDatabase>
@@ -10,6 +9,7 @@
 
 void createTable(const QString &createTableQuery, const QString &tableName)
 {
+    qDebug()<<"QUERY = "<<createTableQuery;
     QSqlQuery creatingQuery;
     if (!creatingQuery.exec(createTableQuery))
     {

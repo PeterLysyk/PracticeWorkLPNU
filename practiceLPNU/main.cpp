@@ -16,6 +16,9 @@ int main(int argc, char *argv[])
     loginForm->show();
     auto mainWindow = std::make_unique<MainWindow>(loginForm.get());
     mainWindow->setDataBaseSettings("C:/Users/Petro/Desktop/db.sqlite", "QSQLITE");
+
+    createAllTablesInTheDataBase();
+
     if (!mainWindow->getDataBase().isOpen())
     {
         QMessageBox::information(mainWindow.get(),

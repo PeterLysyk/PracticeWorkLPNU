@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>403</width>
+    <width>557</width>
     <height>300</height>
    </rect>
   </property>
@@ -20,6 +20,78 @@
      <y>10</y>
      <width>141</width>
      <height>131</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="idInTheTableLineEdit">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>10</y>
+     <width>141</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="selectRecordByIdButton">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>50</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Отримати запис</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="DeleteRecordByIdButton">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>80</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Видалити запис</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="selectAllRecords">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>110</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Отримати всі записи</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Idlabel">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>10</y>
+     <width>47</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>ID у базі</string>
+   </property>
+  </widget>
+  <widget class="QTableView" name="tableView">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>150</y>
+     <width>531</width>
+     <height>141</height>
     </rect>
    </property>
   </widget>
