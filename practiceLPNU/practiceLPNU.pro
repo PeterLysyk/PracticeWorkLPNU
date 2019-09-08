@@ -58,8 +58,7 @@ HEADERS += \
         loginform.h \
         mainwindow.h \
         tablerecordaddqueries.h \
-        tablescreatequeries.h \
-        tableselectqueries.h
+        tablescreatequeries.h
 
 FORMS += \
         addbulidingobject.ui \

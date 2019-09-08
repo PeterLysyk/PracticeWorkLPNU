@@ -44,22 +44,22 @@ public:
     {
         if (AddMaterial->objectName().isEmpty())
             AddMaterial->setObjectName(QString::fromUtf8("AddMaterial"));
-        AddMaterial->resize(395, 310);
+        AddMaterial->resize(366, 263);
         ExpiritDateLabel = new QLabel(AddMaterial);
         ExpiritDateLabel->setObjectName(QString::fromUtf8("ExpiritDateLabel"));
         ExpiritDateLabel->setGeometry(QRect(10, 100, 101, 16));
         Weight = new QLineEdit(AddMaterial);
         Weight->setObjectName(QString::fromUtf8("Weight"));
-        Weight->setGeometry(QRect(120, 130, 271, 22));
+        Weight->setGeometry(QRect(120, 130, 241, 22));
         MadeDateLabel = new QLabel(AddMaterial);
         MadeDateLabel->setObjectName(QString::fromUtf8("MadeDateLabel"));
         MadeDateLabel->setGeometry(QRect(10, 70, 101, 16));
         AddMaterialButton = new QPushButton(AddMaterial);
         AddMaterialButton->setObjectName(QString::fromUtf8("AddMaterialButton"));
-        AddMaterialButton->setGeometry(QRect(310, 280, 80, 21));
+        AddMaterialButton->setGeometry(QRect(280, 240, 80, 21));
         IdMaterial = new QLineEdit(AddMaterial);
         IdMaterial->setObjectName(QString::fromUtf8("IdMaterial"));
-        IdMaterial->setGeometry(QRect(121, 10, 271, 20));
+        IdMaterial->setGeometry(QRect(121, 10, 241, 20));
         CountLabel = new QLabel(AddMaterial);
         CountLabel->setObjectName(QString::fromUtf8("CountLabel"));
         CountLabel->setGeometry(QRect(9, 159, 81, 21));
@@ -68,7 +68,7 @@ public:
         WeightLabel->setGeometry(QRect(10, 130, 81, 16));
         Name = new QLineEdit(AddMaterial);
         Name->setObjectName(QString::fromUtf8("Name"));
-        Name->setGeometry(QRect(120, 40, 271, 22));
+        Name->setGeometry(QRect(120, 40, 241, 22));
         IdMaterialLabel = new QLabel(AddMaterial);
         IdMaterialLabel->setObjectName(QString::fromUtf8("IdMaterialLabel"));
         IdMaterialLabel->setGeometry(QRect(10, 10, 71, 16));
@@ -77,25 +77,25 @@ public:
         NameLabel->setGeometry(QRect(10, 40, 30, 16));
         Count = new QLineEdit(AddMaterial);
         Count->setObjectName(QString::fromUtf8("Count"));
-        Count->setGeometry(QRect(120, 160, 271, 22));
+        Count->setGeometry(QRect(120, 160, 241, 22));
         QualityLabel = new QLabel(AddMaterial);
         QualityLabel->setObjectName(QString::fromUtf8("QualityLabel"));
         QualityLabel->setGeometry(QRect(9, 189, 81, 21));
         Quality = new QLineEdit(AddMaterial);
         Quality->setObjectName(QString::fromUtf8("Quality"));
-        Quality->setGeometry(QRect(120, 190, 271, 22));
+        Quality->setGeometry(QRect(120, 190, 241, 22));
         DescriptionLabel = new QLabel(AddMaterial);
         DescriptionLabel->setObjectName(QString::fromUtf8("DescriptionLabel"));
         DescriptionLabel->setGeometry(QRect(9, 219, 81, 21));
         Description = new QLineEdit(AddMaterial);
         Description->setObjectName(QString::fromUtf8("Description"));
-        Description->setGeometry(QRect(120, 220, 271, 51));
+        Description->setGeometry(QRect(120, 220, 241, 21));
         MadeDate = new QDateEdit(AddMaterial);
         MadeDate->setObjectName(QString::fromUtf8("MadeDate"));
-        MadeDate->setGeometry(QRect(120, 70, 271, 22));
+        MadeDate->setGeometry(QRect(120, 70, 241, 22));
         ExpiritDate = new QDateEdit(AddMaterial);
         ExpiritDate->setObjectName(QString::fromUtf8("ExpiritDate"));
-        ExpiritDate->setGeometry(QRect(120, 100, 271, 22));
+        ExpiritDate->setGeometry(QRect(120, 100, 241, 22));
 
         retranslateUi(AddMaterial);
 

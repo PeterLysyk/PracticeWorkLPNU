@@ -26,68 +26,51 @@ AddRecordsTabWidget::~AddRecordsTabWidget()
 
 void AddRecordsTabWidget::on_BuildingObjectAddRecordButton_clicked()
 {
-
-
-    //auto layot = ui->AddObjectLayout->layout();
-   // clearWidgetsInsideLayout(layot);
     clearWidgetsInsideLayout(ui->AddObjectLayout);
-
     auto obj = new AddBulidingObject(this);
-      // ui->AddObjectLayout->addWidget(obj);
-       ui->AddObjectLayout->addWidget(obj);
-       obj->setWindowModality(Qt::WindowModal);
-
-
+    ui->AddObjectLayout->addWidget(obj);
 }
 
 void AddRecordsTabWidget::on_UsingAddRecordButton_clicked()
 {
-    //auto addUsingRecord = std::make_unique<AddUsing>();
-//    auto addUsingRecord = new AddUsing(ui->recordsAdderDocerWidget);
-//    clearWidgets(ui->recordsAdderDocerWidget);
-//    addUsingRecord->show();
+    clearWidgetsInsideLayout(ui->AddObjectLayout);
+    auto obj = new AddUsing(this);
+    ui->AddObjectLayout->addWidget(obj);
 }
 
 void AddRecordsTabWidget::on_MaterialAddRecordButton_clicked()
 {
-    //auto addMaterialRecord = std::make_unique<AddMaterial>();
-//    auto addMaterialRecord = new AddMaterial(ui->recordsAdderDocerWidget);
-//    clearWidgets(ui->recordsAdderDocerWidget);
-//    addMaterialRecord->show();
+    clearWidgetsInsideLayout(ui->AddObjectLayout);
+    auto obj = new AddMaterial(this);
+    ui->AddObjectLayout->addWidget(obj);
 }
 
 void AddRecordsTabWidget::on_DevileryAddRecordButton_clicked()
 {
-    //auto addDeliveryRecord = std::make_unique<AddDelivery>();
-    //ui->recordsAdderWidget->hide();
-//    ui->recordsAdderDocerWidget->show();
-//    auto addDeliveryRecord = new AddDelivery(ui->recordsAdderDocerWidget);
-//    //clearWidgets(ui->recordsAdderWidget);
-//    addDeliveryRecord->show();
+    clearWidgetsInsideLayout(ui->AddObjectLayout);
+    auto obj = new AddDelivery(this);
+    ui->AddObjectLayout->addWidget(obj);
 }
 
 void AddRecordsTabWidget::on_SuplierAddRecordButton_clicked()
 {
-//    //auto addSuplierRecord = std::make_unique<AddSuplier>();
-//    auto addSuplierRecord = new AddSuplier(ui->recordsAdderDocerWidget);
-//    //clearWidgets(ui->horizontalLayout);
-//    addSuplierRecord->show();
+    clearWidgetsInsideLayout(ui->AddObjectLayout);
+    auto obj = new AddSuplier(this);
+    ui->AddObjectLayout->addWidget(obj);
 }
 
 void AddRecordsTabWidget::on_StorageAddRecordButton_clicked()
 {
-//   // auto addStorageRecord = std::make_unique<AddStorage>();
-//    auto addStorageRecord = new AddStorage(ui->recordsAdderDocerWidget);
-//    clearWidgets(ui->recordsAdderDocerWidget);
-//    addStorageRecord->show();
+    clearWidgetsInsideLayout(ui->AddObjectLayout);
+    auto obj = new AddStorage(this);
+    ui->AddObjectLayout->addWidget(obj);
 }
 
 void AddRecordsTabWidget::on_SlotAddRecordButton_clicked()
 {
-//    //auto addSlotRecord = std::make_unique<AddSlot>();
-//    auto addSlotRecord = new AddSlot(this);
-//    clearWidgets(ui->recordsAdderDocerWidget);
-//    addSlotRecord->show();
+    clearWidgetsInsideLayout(ui->AddObjectLayout);
+    auto obj = new AddSlot(this);
+    ui->AddObjectLayout->addWidget(obj);
 }
 
 void clearWidgetsInsideLayout(QVBoxLayout *layout)

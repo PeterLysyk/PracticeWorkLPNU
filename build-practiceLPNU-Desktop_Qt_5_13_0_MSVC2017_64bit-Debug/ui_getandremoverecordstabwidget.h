@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'getrecordstabwidget.ui'
+** Form generated from reading UI file 'getandremoverecordstabwidget.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.13.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_GETRECORDSTABWIDGET_H
-#define UI_GETRECORDSTABWIDGET_H
+#ifndef UI_GETANDREMOVERECORDSTABWIDGET_H
+#define UI_GETANDREMOVERECORDSTABWIDGET_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -28,7 +28,7 @@ public:
         GetRecordsTabWidget->resize(403, 300);
         TablesNamesListWidget = new QListWidget(GetRecordsTabWidget);
         TablesNamesListWidget->setObjectName(QString::fromUtf8("TablesNamesListWidget"));
-        TablesNamesListWidget->setGeometry(QRect(10, 10, 141, 131));
+        TablesNamesListWidget->setGeometry(QRect(10, 10, 341, 141));
 
         retranslateUi(GetRecordsTabWidget);
 
@@ -48,4 +48,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // UI_GETRECORDSTABWIDGET_H
+#endif // UI_GETANDREMOVERECORDSTABWIDGET_H
