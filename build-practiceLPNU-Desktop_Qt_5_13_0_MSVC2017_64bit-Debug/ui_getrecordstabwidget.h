@@ -30,7 +30,7 @@ public:
     QPushButton *DeleteRecordByIdButton;
     QPushButton *selectAllRecords;
     QLabel *Idlabel;
-    QTableView *tableView;
+    QTableView *selectedRecordsTableView;
 
     void setupUi(QWidget *GetRecordsTabWidget)
     {
@@ -55,9 +55,10 @@ public:
         Idlabel = new QLabel(GetRecordsTabWidget);
         Idlabel->setObjectName(QString::fromUtf8("Idlabel"));
         Idlabel->setGeometry(QRect(160, 10, 47, 20));
-        tableView = new QTableView(GetRecordsTabWidget);
-        tableView->setObjectName(QString::fromUtf8("tableView"));
-        tableView->setGeometry(QRect(10, 150, 531, 141));
+        selectedRecordsTableView = new QTableView(GetRecordsTabWidget);
+        selectedRecordsTableView->setObjectName(QString::fromUtf8("selectedRecordsTableView"));
+        selectedRecordsTableView->setGeometry(QRect(10, 150, 531, 141));
+        selectedRecordsTableView->verticalHeader()->setStretchLastSection(true);
 
         retranslateUi(GetRecordsTabWidget);
 

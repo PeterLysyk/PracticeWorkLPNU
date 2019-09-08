@@ -23,7 +23,7 @@ private slots:
     void on_selectAllRecords_clicked();
 
 private:
-    QString createSelectionQueryForOneRecord(const int id, const QString &tableName);
+    QString createSelectionQueryForOneRecord(const QString id, const QString tableName);
     Ui::GetRecordsTabWidget *ui;
 };
 

@@ -85,7 +85,7 @@
     <string>ID у базі</string>
    </property>
   </widget>
-  <widget class="QTableView" name="tableView">
+  <widget class="QTableView" name="selectedRecordsTableView">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -94,6 +94,9 @@
      <height>141</height>
     </rect>
    </property>
+   <attribute name="verticalHeaderStretchLastSection">
+    <bool>true</bool>
+   </attribute>
   </widget>
  </widget>
  <resources/>
