@@ -29,7 +29,6 @@ SOURCES += \
         adddelivery.cpp \
         addmaterial.cpp \
         addrecordstabwidget.cpp \
-        addrecordswidget.cpp \
         addslot.cpp \
         addstorage.cpp \
         addsuplier.cpp \
@@ -46,7 +45,6 @@ HEADERS += \
         adddelivery.h \
         addmaterial.h \
         addrecordstabwidget.h \
-        addrecordswidget.h \
         addslot.h \
         addstorage.h \
         addsuplier.h \

@@ -226,7 +226,6 @@ void addRecordToUsingTable(
     QSqlQuery addUsingRecordTable;
 
     addUsingRecordTable.prepare(addRecordToUsingTableQuery);
-
     addUsingRecordTable.addBindValue(idUsing);
     addUsingRecordTable.addBindValue(idConstructionObject);
     addUsingRecordTable.addBindValue(idSlot);
@@ -251,6 +250,7 @@ void changeMaterialCountInSlot(const int slotId, const int materialCountDiff)
         QMessageBox::warning(nullptr,
                              "Помилка!",
                              "На слоті нема стільки продукції!");
+        return;
     }
 
     QSqlQuery changeMaterialInSlotQuery;

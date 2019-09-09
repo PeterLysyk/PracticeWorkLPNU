@@ -75,9 +75,9 @@ const QString addRecordToUsingTableQuery =
         "ID,"
         "ID_ОБЄКТУ,"
         "ID_СЛОТА,"
-        "КІЛЬКІСТЬ_МАТЕРІАЛУ"
+        "КІЛЬКІСТЬ_МАТЕРІАЛУ,"
         "ДАТА_ВИКОРИСТАННЯ"
         ")"
-        "VALUES(?,?,?,?);";
+        "VALUES(?,?,?,?,?);";
 
 #endif // TABLERECORDADDQUERIES_H

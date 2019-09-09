@@ -22,7 +22,6 @@ int main(int argc, char *argv[])
                                  "Неможливо відкрити базу даних",
                                  "Перевірте чи база даних існує!");
     }
-    createAllTablesInTheDataBase();
     return application.exec();
 }
 
