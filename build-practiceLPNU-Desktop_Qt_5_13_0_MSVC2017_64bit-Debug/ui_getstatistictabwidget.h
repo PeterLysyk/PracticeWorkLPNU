@@ -11,7 +11,9 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -19,24 +21,28 @@ QT_BEGIN_NAMESPACE
 class Ui_GetStatisticTabWidget
 {
 public:
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
+    QPushButton *getStatisticForObjects;
+    QPushButton *getStatisticForSuplier;
     QPushButton *pushButton_3;
+    QTableView *tableView;
 
     void setupUi(QWidget *GetStatisticTabWidget)
     {
         if (GetStatisticTabWidget->objectName().isEmpty())
             GetStatisticTabWidget->setObjectName(QString::fromUtf8("GetStatisticTabWidget"));
-        GetStatisticTabWidget->resize(400, 300);
-        pushButton = new QPushButton(GetStatisticTabWidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(280, 110, 80, 21));
-        pushButton_2 = new QPushButton(GetStatisticTabWidget);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(10, 100, 80, 21));
+        GetStatisticTabWidget->resize(546, 309);
+        getStatisticForObjects = new QPushButton(GetStatisticTabWidget);
+        getStatisticForObjects->setObjectName(QString::fromUtf8("getStatisticForObjects"));
+        getStatisticForObjects->setGeometry(QRect(170, 10, 191, 41));
+        getStatisticForSuplier = new QPushButton(GetStatisticTabWidget);
+        getStatisticForSuplier->setObjectName(QString::fromUtf8("getStatisticForSuplier"));
+        getStatisticForSuplier->setGeometry(QRect(0, 10, 171, 41));
         pushButton_3 = new QPushButton(GetStatisticTabWidget);
         pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        pushButton_3->setGeometry(QRect(200, 260, 80, 21));
+        pushButton_3->setGeometry(QRect(360, 10, 181, 41));
+        tableView = new QTableView(GetStatisticTabWidget);
+        tableView->setObjectName(QString::fromUtf8("tableView"));
+        tableView->setGeometry(QRect(0, 60, 541, 241));
 
         retranslateUi(GetStatisticTabWidget);
 
@@ -46,9 +52,9 @@ public:
     void retranslateUi(QWidget *GetStatisticTabWidget)
     {
         GetStatisticTabWidget->setWindowTitle(QCoreApplication::translate("GetStatisticTabWidget", "Form", nullptr));
-        pushButton->setText(QCoreApplication::translate("GetStatisticTabWidget", "PushButton", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("GetStatisticTabWidget", "PushButton", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("GetStatisticTabWidget", "PushButton", nullptr));
+        getStatisticForObjects->setText(QCoreApplication::translate("GetStatisticTabWidget", "\320\241\321\202\320\260\321\202\320\270\321\201\321\202\320\270\320\272\320\260 \320\221\321\203\320\264\321\226\320\262\320\265\320\273\321\214\320\270\321\205\321\226 \320\276\320\261'\321\224\320\272\321\202\321\226\320\262", nullptr));
+        getStatisticForSuplier->setText(QCoreApplication::translate("GetStatisticTabWidget", "\320\241\321\202\320\260\321\202\320\270\321\201\321\202\320\270\320\272\320\260 \320\237\320\276\321\201\321\202\320\260\321\207\320\260\320\273\321\214\320\275\320\270\320\272\321\226\320\262", nullptr));
+        pushButton_3->setText(QCoreApplication::translate("GetStatisticTabWidget", "\320\241\321\202\320\260\321\202\320\270\321\201\321\202\320\270\320\272\320\260 \320\274\320\260\321\202\320\265\321\200\321\226\320\260\320\273\321\226\320\262", nullptr));
     } // retranslateUi
 
 };

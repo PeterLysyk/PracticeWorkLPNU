@@ -6,50 +6,60 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>546</width>
+    <height>309</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="getStatisticForObjects">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>110</y>
-     <width>80</width>
-     <height>21</height>
+     <x>170</x>
+     <y>10</y>
+     <width>191</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>PushButton</string>
+    <string>Статистика Будівельихі об'єктів</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="getStatisticForSuplier">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>100</y>
-     <width>80</width>
-     <height>21</height>
+     <x>0</x>
+     <y>10</y>
+     <width>171</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>PushButton</string>
+    <string>Статистика Постачальників</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="getStatisticForMaterial">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>260</y>
-     <width>80</width>
-     <height>21</height>
+     <x>360</x>
+     <y>10</y>
+     <width>181</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>PushButton</string>
+    <string>Статистика матеріалів</string>
+   </property>
+  </widget>
+  <widget class="QTableView" name="tableView">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>60</y>
+     <width>541</width>
+     <height>241</height>
+    </rect>
    </property>
   </widget>
  </widget>
