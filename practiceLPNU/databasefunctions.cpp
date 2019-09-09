@@ -220,6 +220,7 @@ void addRecordToUsingTable(
         const int idUsing,
         const int idConstructionObject,
         const int idSlot,
+        const int materialCount,
         const QString &usingDate)
 {
     QSqlQuery addUsingRecordTable;
@@ -229,6 +230,7 @@ void addRecordToUsingTable(
     addUsingRecordTable.addBindValue(idUsing);
     addUsingRecordTable.addBindValue(idConstructionObject);
     addUsingRecordTable.addBindValue(idSlot);
+    addUsingRecordTable.addBindValue(materialCount);
     addUsingRecordTable.addBindValue(QDateTime::fromString(usingDate,"dd.mm.yyyy"));
 
     if (!addUsingRecordTable.exec())
@@ -252,10 +254,10 @@ void changeMaterialCountInSlot(const int slotId, const int materialCountDiff)
     }
 
     QSqlQuery changeMaterialInSlotQuery;
-    changeMaterialInSlotQuery.prepare("UPDATE СЛОТ"
+    changeMaterialInSlotQuery.prepare("UPDATE СЛОТ "
         "SET КІЛЬКІСТЬ_МАТЕРІАЛУ = " +
         QString::number(currentMaterialCount + materialCountDiff) +
-        "WHERE ID = " + QString::number(slotId) + ";");
+        " WHERE ID = " + QString::number(slotId) + ";");
 
     if (changeMaterialInSlotQuery.exec())
     {
@@ -274,7 +276,12 @@ void changeMaterialCountInSlot(const int slotId, const int materialCountDiff)
 int getCurrentMaterialCountInSlot(const int slotId)
 {
     QSqlQuery getCurrentMaterialQuery;
-    getCurrentMaterialQuery.prepare("SELECT КІЛЬКІСТЬ_МАТЕРІАЛУ"
-       "FROM СЛОТ WHERE ID =" + QString::number(slotId) + ";");
-    return getCurrentMaterialQuery.exec() ? getCurrentMaterialQuery.value(0).toInt() : 0;
+    getCurrentMaterialQuery.exec("SELECT *"
+       "FROM СЛОТ WHERE ID = " + QString::number(slotId) + ";");
+    while(getCurrentMaterialQuery.next())
+    {
+        QString materialCount = getCurrentMaterialQuery.value(3).toString();
+        return materialCount.isEmpty() ? 0 : materialCount.toInt();
+    }
+    return 0;
 }

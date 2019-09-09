@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>341</width>
-    <height>152</height>
+    <height>196</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -40,7 +40,7 @@
    <property name="geometry">
     <rect>
      <x>110</x>
-     <y>100</y>
+     <y>130</y>
      <width>231</width>
      <height>22</height>
     </rect>
@@ -60,7 +60,7 @@
    <property name="geometry">
     <rect>
      <x>260</x>
-     <y>130</y>
+     <y>170</y>
      <width>80</width>
      <height>21</height>
     </rect>
@@ -73,7 +73,7 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>100</y>
+     <y>130</y>
      <width>101</width>
      <height>21</height>
     </rect>
@@ -116,6 +116,29 @@
      <width>231</width>
      <height>22</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="materialCount">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>100</y>
+     <width>231</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="materialCountLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>100</y>
+     <width>81</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Кількість</string>
    </property>
   </widget>
  </widget>

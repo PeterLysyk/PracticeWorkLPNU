@@ -31,12 +31,14 @@ public:
     QLabel *IdObjectLabel;
     QLabel *IdSlotLabel;
     QLineEdit *IdSlot;
+    QLineEdit *materialCount;
+    QLabel *materialCountLabel;
 
     void setupUi(QWidget *AddUsing)
     {
         if (AddUsing->objectName().isEmpty())
             AddUsing->setObjectName(QString::fromUtf8("AddUsing"));
-        AddUsing->resize(341, 152);
+        AddUsing->resize(341, 196);
         IdUsingLabel = new QLabel(AddUsing);
         IdUsingLabel->setObjectName(QString::fromUtf8("IdUsingLabel"));
         IdUsingLabel->setGeometry(QRect(10, 10, 91, 16));
@@ -45,16 +47,16 @@ public:
         IdObject->setGeometry(QRect(110, 40, 231, 22));
         UsingDate = new QDateEdit(AddUsing);
         UsingDate->setObjectName(QString::fromUtf8("UsingDate"));
-        UsingDate->setGeometry(QRect(110, 100, 231, 22));
+        UsingDate->setGeometry(QRect(110, 130, 231, 22));
         IdUsing = new QLineEdit(AddUsing);
         IdUsing->setObjectName(QString::fromUtf8("IdUsing"));
         IdUsing->setGeometry(QRect(110, 10, 231, 22));
         AddUsingButton = new QPushButton(AddUsing);
         AddUsingButton->setObjectName(QString::fromUtf8("AddUsingButton"));
-        AddUsingButton->setGeometry(QRect(260, 130, 80, 21));
+        AddUsingButton->setGeometry(QRect(260, 170, 80, 21));
         UsingDateLabel = new QLabel(AddUsing);
         UsingDateLabel->setObjectName(QString::fromUtf8("UsingDateLabel"));
-        UsingDateLabel->setGeometry(QRect(0, 100, 101, 21));
+        UsingDateLabel->setGeometry(QRect(0, 130, 101, 21));
         IdObjectLabel = new QLabel(AddUsing);
         IdObjectLabel->setObjectName(QString::fromUtf8("IdObjectLabel"));
         IdObjectLabel->setGeometry(QRect(10, 40, 81, 16));
@@ -64,6 +66,12 @@ public:
         IdSlot = new QLineEdit(AddUsing);
         IdSlot->setObjectName(QString::fromUtf8("IdSlot"));
         IdSlot->setGeometry(QRect(110, 70, 231, 22));
+        materialCount = new QLineEdit(AddUsing);
+        materialCount->setObjectName(QString::fromUtf8("materialCount"));
+        materialCount->setGeometry(QRect(110, 100, 231, 22));
+        materialCountLabel = new QLabel(AddUsing);
+        materialCountLabel->setObjectName(QString::fromUtf8("materialCountLabel"));
+        materialCountLabel->setGeometry(QRect(10, 100, 81, 16));
 
         retranslateUi(AddUsing);
 
@@ -78,6 +86,7 @@ public:
         UsingDateLabel->setText(QCoreApplication::translate("AddUsing", "\320\224\320\260\321\202\320\260 \320\262\320\270\320\272\320\276\321\200\320\270\321\201\321\202\320\260\320\275\320\275\321\217", nullptr));
         IdObjectLabel->setText(QCoreApplication::translate("AddUsing", "ID \320\276\320\261'\321\224\320\272\321\202\321\203", nullptr));
         IdSlotLabel->setText(QCoreApplication::translate("AddUsing", "ID \321\201\320\273\320\276\321\202\320\260", nullptr));
+        materialCountLabel->setText(QCoreApplication::translate("AddUsing", "\320\232\321\226\320\273\321\214\320\272\321\226\321\201\321\202\321\214", nullptr));
     } // retranslateUi
 
 };

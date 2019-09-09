@@ -22,6 +22,8 @@ void AddUsing::on_AddUsingButton_clicked()
                 ui->IdUsing->text().toInt(),
                 ui->IdObject->text().toInt(),
                 ui->IdSlot->text().toInt(),
+                ui->materialCount->text().toInt(),
                 ui->UsingDate->text()
             );
+    //changeMaterialCountInSlot()
 }

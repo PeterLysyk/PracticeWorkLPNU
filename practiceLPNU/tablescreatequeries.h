@@ -79,6 +79,7 @@ const QString createUsingTableQuery =
         "ID INTEGER NOT NULL,"
         "ID_ОБЄКТУ INTEGER NOT NULL,"
         "ID_СЛОТА INTEGER NOT NULL,"
+        "КІЛЬКІСТЬ_МАТЕРІАЛУ INTEGER,"
         "ДАТА_ВИКОРИСТАННЯ DATE,"
         "PRIMARY KEY (ID),"
         "FOREIGN KEY (ID_ОБЄКТУ) REFERENCES БУДІВЛЬНИЙ_ОБЄКТ(ID_ОБЄКТУ) ON UPDATE CASCADE,"
