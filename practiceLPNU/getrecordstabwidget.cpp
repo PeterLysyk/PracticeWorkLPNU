@@ -21,11 +21,6 @@ GetRecordsTabWidget::GetRecordsTabWidget(QWidget *parent) :
     ui->TablesNamesListWidget->addItem(storageTableName);
     ui->TablesNamesListWidget->addItem(slotTableName);
 
-    QHeaderView *verticalHeader = ui->selectedRecordsTableView->verticalHeader();
-    verticalHeader->setSectionResizeMode(QHeaderView::Fixed);
-   // verticalHeader->setStretchLastSection(true);
-    verticalHeader->setDefaultSectionSize(25);
-    //ui->selectedRecordsTableView->horizontalHeader()->setStretchLastSection(true);
 }
 
 GetRecordsTabWidget::~GetRecordsTabWidget()
@@ -38,10 +33,11 @@ void GetRecordsTabWidget::on_selectRecordByIdButton_clicked()
     QSqlQueryModel *model = new QSqlQueryModel();
     QSqlQuery selectOneRecordByIdQuery;
 
-    selectOneRecordByIdQuery.prepare
-            (createSelectionQueryForOneRecord(
+    selectOneRecordByIdQuery.prepare(createSelectionForOneRecordQuery
+                 (
                  ui->idInTheTableLineEdit->text(),
-                 ui->TablesNamesListWidget->currentItem()->text()));
+                 ui->TablesNamesListWidget->currentItem()->text()
+                 ));
     if (!selectOneRecordByIdQuery.exec())
     {
         QMessageBox::information(nullptr,
@@ -52,21 +48,66 @@ void GetRecordsTabWidget::on_selectRecordByIdButton_clicked()
 
     model->setQuery(selectOneRecordByIdQuery);
     ui->selectedRecordsTableView->setModel(model);
+    ui->selectedRecordsTableView->resizeRowsToContents();
+    ui->selectedRecordsTableView->resizeColumnsToContents();
 }
 
 void GetRecordsTabWidget::on_DeleteRecordByIdButton_clicked()
 {
-
+    QSqlQuery deleteRecordQuery;
+    deleteRecordQuery.prepare(createDeleteRecordQuery
+                              (
+                              ui->idInTheTableLineEdit->text(),
+                              ui->TablesNamesListWidget->currentItem()->text()
+                              ));
+    if (!deleteRecordQuery.exec())
+    {
+        QMessageBox::information(nullptr,
+                                 "Помилка",
+                                 "Не вдалось видалити запис.");
+    }
+    else
+    {
+        QMessageBox::information(nullptr,
+                                 "Видалення",
+                                 "Запис успішно видалено!");
+    }
 }
 
 void GetRecordsTabWidget::on_selectAllRecords_clicked()
 {
+    QSqlQueryModel *model = new QSqlQueryModel();
     QSqlQuery selectAllRecordsQuery;
-
+    selectAllRecordsQuery.prepare(createSelectionForAllRecordsQuery
+                    (
+                    ui->TablesNamesListWidget->currentItem()->text())
+                    );
+    if (!selectAllRecordsQuery.exec())
+    {
+        QMessageBox::information(nullptr,
+                                 "Помилка",
+                                 "Записів не існує."
+                                 "Перевірте правильність введення!");
+    }
+    model->setQuery(selectAllRecordsQuery);
+    ui->selectedRecordsTableView->setModel(model);
+    ui->selectedRecordsTableView->resizeRowsToContents();
+    ui->selectedRecordsTableView->resizeColumnsToContents();
 }
 
-QString GetRecordsTabWidget::createSelectionQueryForOneRecord(const QString id,
-                                                              const QString tableName)
+QString GetRecordsTabWidget::createSelectionForAllRecordsQuery(const QString &tableName) const
+{
+    return "SELECT * FROM " +  tableName + ";";
+}
+
+QString GetRecordsTabWidget::createDeleteRecordQuery(const QString &id,
+                                                     const QString &tableName) const
+{
+    return "DELETE FROM " +  tableName + " WHERE ID = " + id + ";";
+}
+
+QString GetRecordsTabWidget::createSelectionForOneRecordQuery(const QString &id,
+                                                              const QString &tableName) const
 {
     return "SELECT * FROM " +  tableName + " WHERE ID = " + id + ";";
 }

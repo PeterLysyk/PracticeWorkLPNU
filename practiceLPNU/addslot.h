@@ -19,6 +19,8 @@ public:
 private slots:
     void on_AddDeliveryButton_clicked();
 
+    void on_addMatherialsToSlot_clicked();
+
 private:
     Ui::AddSlot *ui;
 };

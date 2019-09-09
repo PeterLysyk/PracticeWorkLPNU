@@ -22,3 +22,9 @@ void AddSlot::on_AddDeliveryButton_clicked()
                 ui->IdMaterial->text().toInt(),
                 ui->MaterialCount->text().toInt());
 }
+
+void AddSlot::on_addMatherialsToSlot_clicked()
+{
+    changeMaterialCountInSlot(ui->idSlotAdding->text().toInt(),
+                              ui->MaterialCountAdding->text().toInt());
+}

@@ -69,6 +69,7 @@ void addRecordToUsingTable(
          const int idSlot,
          const QString &usingDate);
 
-
+void changeMaterialCountInSlot(const int slotId, const int materialCountDiff);
+int getCurrentMaterialCountInSlot(const int slotId);
 
 #endif // DATABASEFUNCTIONS_H

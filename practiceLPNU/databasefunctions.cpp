@@ -4,6 +4,7 @@
 #include "databasetablesnames.h"
 #include <QSqlDatabase>
 #include<iostream>
+#include <QString>
 #include <QMessageBox>
 #include<QtSql>
 
@@ -236,4 +237,44 @@ void addRecordToUsingTable(
         return;
     }
     showAddingRecordSuccess(usingTableName);
+}
+
+void changeMaterialCountInSlot(const int slotId, const int materialCountDiff)
+{
+    auto currentMaterialCount =
+            getCurrentMaterialCountInSlot(slotId);
+
+    if (currentMaterialCount + materialCountDiff < 0)
+    {
+        QMessageBox::warning(nullptr,
+                             "Помилка!",
+                             "На слоті нема стільки продукції!");
+    }
+
+    QSqlQuery changeMaterialInSlotQuery;
+    changeMaterialInSlotQuery.prepare("UPDATE СЛОТ"
+        "SET КІЛЬКІСТЬ_МАТЕРІАЛУ = " +
+        QString::number(currentMaterialCount + materialCountDiff) +
+        "WHERE ID = " + QString::number(slotId) + ";");
+
+    if (changeMaterialInSlotQuery.exec())
+    {
+        QMessageBox::information(nullptr,
+                                 "Успішна зміна",
+                                 "Кількість продукції у слоті успішно змінено");
+    }
+    else
+    {
+        QMessageBox::information(nullptr,
+                                 "Помилка зміни",
+                                 "Не вдалось змінити кількість продукції у слоті");
+    }
+}
+
+int getCurrentMaterialCountInSlot(const int slotId)
+{
+    QSqlQuery getCurrentMaterialQuery;
+    getCurrentMaterialQuery.prepare("SELECT КІЛЬКІСТЬ_МАТЕРІАЛУ"
+       "FROM СЛОТ WHERE ID =" + QString::number(slotId) + ";");
+    return getCurrentMaterialQuery.exec() ? getCurrentMaterialQuery.value(0).toInt() : 0;
 }

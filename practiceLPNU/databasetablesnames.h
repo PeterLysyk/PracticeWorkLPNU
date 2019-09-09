@@ -3,7 +3,7 @@
 
 #include <QString>
 
-const QString buildingObjectTableName = "БУДІВЕЛЬНИЙ_ОБЄКТ";
+const QString buildingObjectTableName = "БУДІВЛЬНИЙ_ОБЄКТ";
 const QString usingTableName = "ВИКОРИСТАННЯ";
 const QString materailTableName = "МАТЕРІАЛ";
 const QString deliveryTableName = "ПОСТАВКА";

@@ -58,6 +58,10 @@ public:
         selectedRecordsTableView = new QTableView(GetRecordsTabWidget);
         selectedRecordsTableView->setObjectName(QString::fromUtf8("selectedRecordsTableView"));
         selectedRecordsTableView->setGeometry(QRect(10, 150, 531, 141));
+        QFont font;
+        font.setPointSize(7);
+        selectedRecordsTableView->setFont(font);
+        selectedRecordsTableView->verticalHeader()->setVisible(false);
         selectedRecordsTableView->verticalHeader()->setStretchLastSection(true);
 
         retranslateUi(GetRecordsTabWidget);

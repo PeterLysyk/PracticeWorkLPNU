@@ -94,6 +94,14 @@
      <height>141</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>7</pointsize>
+    </font>
+   </property>
+   <attribute name="verticalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
    <attribute name="verticalHeaderStretchLastSection">
     <bool>true</bool>
    </attribute>
