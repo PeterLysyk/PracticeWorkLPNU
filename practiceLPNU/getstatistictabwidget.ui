@@ -52,7 +52,7 @@
     <string>Статистика матеріалів</string>
    </property>
   </widget>
-  <widget class="QTableView" name="tableView">
+  <widget class="QTableView" name="StatisticTableView">
    <property name="geometry">
     <rect>
      <x>0</x>

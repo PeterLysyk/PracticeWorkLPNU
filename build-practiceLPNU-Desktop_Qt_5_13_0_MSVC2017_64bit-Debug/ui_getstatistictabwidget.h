@@ -23,8 +23,8 @@ class Ui_GetStatisticTabWidget
 public:
     QPushButton *getStatisticForObjects;
     QPushButton *getStatisticForSuplier;
-    QPushButton *pushButton_3;
-    QTableView *tableView;
+    QPushButton *getStatisticForMaterial;
+    QTableView *StatisticTableView;
 
     void setupUi(QWidget *GetStatisticTabWidget)
     {
@@ -37,12 +37,12 @@ public:
         getStatisticForSuplier = new QPushButton(GetStatisticTabWidget);
         getStatisticForSuplier->setObjectName(QString::fromUtf8("getStatisticForSuplier"));
         getStatisticForSuplier->setGeometry(QRect(0, 10, 171, 41));
-        pushButton_3 = new QPushButton(GetStatisticTabWidget);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        pushButton_3->setGeometry(QRect(360, 10, 181, 41));
-        tableView = new QTableView(GetStatisticTabWidget);
-        tableView->setObjectName(QString::fromUtf8("tableView"));
-        tableView->setGeometry(QRect(0, 60, 541, 241));
+        getStatisticForMaterial = new QPushButton(GetStatisticTabWidget);
+        getStatisticForMaterial->setObjectName(QString::fromUtf8("getStatisticForMaterial"));
+        getStatisticForMaterial->setGeometry(QRect(360, 10, 181, 41));
+        StatisticTableView = new QTableView(GetStatisticTabWidget);
+        StatisticTableView->setObjectName(QString::fromUtf8("StatisticTableView"));
+        StatisticTableView->setGeometry(QRect(0, 60, 541, 241));
 
         retranslateUi(GetStatisticTabWidget);
 
@@ -54,7 +54,7 @@ public:
         GetStatisticTabWidget->setWindowTitle(QCoreApplication::translate("GetStatisticTabWidget", "Form", nullptr));
         getStatisticForObjects->setText(QCoreApplication::translate("GetStatisticTabWidget", "\320\241\321\202\320\260\321\202\320\270\321\201\321\202\320\270\320\272\320\260 \320\221\321\203\320\264\321\226\320\262\320\265\320\273\321\214\320\270\321\205\321\226 \320\276\320\261'\321\224\320\272\321\202\321\226\320\262", nullptr));
         getStatisticForSuplier->setText(QCoreApplication::translate("GetStatisticTabWidget", "\320\241\321\202\320\260\321\202\320\270\321\201\321\202\320\270\320\272\320\260 \320\237\320\276\321\201\321\202\320\260\321\207\320\260\320\273\321\214\320\275\320\270\320\272\321\226\320\262", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("GetStatisticTabWidget", "\320\241\321\202\320\260\321\202\320\270\321\201\321\202\320\270\320\272\320\260 \320\274\320\260\321\202\320\265\321\200\321\226\320\260\320\273\321\226\320\262", nullptr));
+        getStatisticForMaterial->setText(QCoreApplication::translate("GetStatisticTabWidget", "\320\241\321\202\320\260\321\202\320\270\321\201\321\202\320\270\320\272\320\260 \320\274\320\260\321\202\320\265\321\200\321\226\320\260\320\273\321\226\320\262", nullptr));
     } // retranslateUi
 
 };
