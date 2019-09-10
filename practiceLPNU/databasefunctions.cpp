@@ -1,15 +1,16 @@
 #include "databasefunctions.h"
 #include "tablescreatequeries.h"
-#include "tableselectqueries.h"
 #include "tablerecordaddqueries.h"
+#include "databasetablesnames.h"
 #include <QSqlDatabase>
 #include<iostream>
+#include <QString>
 #include <QMessageBox>
 #include<QtSql>
 
-
 void createTable(const QString &createTableQuery, const QString &tableName)
 {
+    qDebug()<<"QUERY = "<<createTableQuery;
     QSqlQuery creatingQuery;
     if (!creatingQuery.exec(createTableQuery))
     {
@@ -53,13 +54,13 @@ void showAddingRecordSuccess(const QString &tableName, QWidget *widget)
 
 void createAllTablesInTheDataBase()
 {
-    createTable(createSuplierTableQuery, "ПОСТАЧАЛЬНИК");
-    createTable(createStorageTableQuery, "СКЛАД");
-    createTable(createConstructionObjectTableQuery, "БУДІВЛЬНИЙ_ОБЄКТ");
-    createTable(createMaterialTableQuery, "МАТЕРІАЛ");
-    createTable(createDeliveryTableQuery, "ПОСТАВКА");
-    createTable(createsSlotTableQuery, "СЛОТ");
-    createTable(createUsingTableQuery, "ПОСТАЧАЛЬНИК");
+    createTable(createSuplierTableQuery, suplierTableName);
+    createTable(createStorageTableQuery, storageTableName);
+    createTable(createConstructionObjectTableQuery, buildingObjectTableName);
+    createTable(createMaterialTableQuery, materailTableName);
+    createTable(createDeliveryTableQuery, deliveryTableName);
+    createTable(createsSlotTableQuery, slotTableName);
+    createTable(createUsingTableQuery, suplierTableName);
 }
 
 void addRecordToSuplierTable(const int idSuplier,
@@ -74,15 +75,15 @@ void addRecordToSuplierTable(const int idSuplier,
     addSuplierRecordQuery.addBindValue(idSuplier);
     addSuplierRecordQuery.addBindValue(name);
     addSuplierRecordQuery.addBindValue
-            (QDateTime::fromString(contractSignatureDate,"dd-mm-yyyy"));
+            (QDateTime::fromString(contractSignatureDate,"dd.mm.yyyy"));
     addSuplierRecordQuery.addBindValue(rate);
 
     if (!addSuplierRecordQuery.exec())
     {
-        showAddingRecordError("ПОСТАЧАЛЬНИК");
+        showAddingRecordError(suplierTableName);
         return;
     }
-    showAddingRecordSuccess("ПОСТАЧАЛЬНИК");
+    showAddingRecordSuccess(suplierTableName);
 }
 
 void addRecordToStorageTable(
@@ -104,10 +105,10 @@ void addRecordToStorageTable(
 
     if (!addStorageRecordQuery.exec())
     {
-        showAddingRecordError("СКЛАД");
+        showAddingRecordError(storageTableName);
         return;
     }
-    showAddingRecordSuccess("СКЛАД");
+    showAddingRecordSuccess(storageTableName);
 }
 
 void addRecordToConstructionObjectTable(
@@ -127,14 +128,14 @@ void addRecordToConstructionObjectTable(
     addConstructionOnjectRecordQuery.addBindValue(streetAdress);
     addConstructionOnjectRecordQuery.addBindValue(buildingAdress);
     addConstructionOnjectRecordQuery.addBindValue(priority);
-    addConstructionOnjectRecordQuery.addBindValue(QDateTime::fromString(buildingStartDate,"dd-mm-yyyy"));
+    addConstructionOnjectRecordQuery.addBindValue(QDateTime::fromString(buildingStartDate,"dd.mm.yyyy"));
 
     if (!addConstructionOnjectRecordQuery.exec())
     {
-        showAddingRecordError("БУДІВЕЛЬНИЙ_ОБЄКТ");
+        showAddingRecordError(buildingObjectTableName);
         return;
     }
-    showAddingRecordSuccess("БУДІВЕЛЬНИЙ_ОБЄКТ");
+    showAddingRecordSuccess(buildingObjectTableName);
 }
 
 void addRecordToMaterialTable(
@@ -152,7 +153,6 @@ void addRecordToMaterialTable(
 
     addMaterialRecordQuery.prepare(addRecordToMaterialTableQuery);
 
-    qDebug()<<"here";
     addMaterialRecordQuery.addBindValue(idMaterial);
     addMaterialRecordQuery.addBindValue(name);
     addMaterialRecordQuery.addBindValue(QDateTime::fromString(madeDate,"dd-mm-yyyy"));
@@ -164,10 +164,10 @@ void addRecordToMaterialTable(
 
     if (!addMaterialRecordQuery.exec())
     {
-        showAddingRecordError("МАТЕРІАЛ");
+        showAddingRecordError(materailTableName);
         return;
     }
-    showAddingRecordSuccess("МАТЕРІАЛ");
+    showAddingRecordSuccess(materailTableName);
 }
 
 void addRecordToDeliveryTable(
@@ -187,10 +187,10 @@ void addRecordToDeliveryTable(
 
     if (!addDeliveryRecordQuery.exec())
     {
-        showAddingRecordError("ПОСТАВКА");
+        showAddingRecordError(deliveryTableName);
         return;
     }
-    showAddingRecordSuccess("ПОСТАВКА");
+    showAddingRecordSuccess(deliveryTableName);
 }
 
 void addRecordToSlotTable(
@@ -210,31 +210,78 @@ void addRecordToSlotTable(
 
     if (!addSlotRecordQuery.exec())
     {
-        showAddingRecordError("СЛОТ");
+        showAddingRecordError(slotTableName);
         return;
     }
-    showAddingRecordSuccess("СЛОТ");
+    showAddingRecordSuccess(slotTableName);
 }
 
 void addRecordToUsingTable(
         const int idUsing,
         const int idConstructionObject,
         const int idSlot,
+        const int materialCount,
         const QString &usingDate)
 {
     QSqlQuery addUsingRecordTable;
 
     addUsingRecordTable.prepare(addRecordToUsingTableQuery);
-
     addUsingRecordTable.addBindValue(idUsing);
     addUsingRecordTable.addBindValue(idConstructionObject);
     addUsingRecordTable.addBindValue(idSlot);
-    addUsingRecordTable.addBindValue(QDateTime::fromString(usingDate,"dd-mm-yyyy"));
+    addUsingRecordTable.addBindValue(materialCount);
+    addUsingRecordTable.addBindValue(QDateTime::fromString(usingDate,"dd.mm.yyyy"));
 
     if (!addUsingRecordTable.exec())
     {
-        showAddingRecordError("ВИКОРИСТАННЯ");
+        showAddingRecordError(usingTableName);
         return;
     }
-    showAddingRecordSuccess("ВИКОРИСТАННЯ");
+    showAddingRecordSuccess(usingTableName);
+}
+
+void changeMaterialCountInSlot(const int slotId, const int materialCountDiff)
+{
+    auto currentMaterialCount =
+            getCurrentMaterialCountInSlot(slotId);
+
+    if (currentMaterialCount + materialCountDiff < 0)
+    {
+        QMessageBox::warning(nullptr,
+                             "Помилка!",
+                             "На слоті нема стільки продукції!");
+        return;
+    }
+
+    QSqlQuery changeMaterialInSlotQuery;
+    changeMaterialInSlotQuery.prepare("UPDATE СЛОТ "
+        "SET КІЛЬКІСТЬ_МАТЕРІАЛУ = " +
+        QString::number(currentMaterialCount + materialCountDiff) +
+        " WHERE ID = " + QString::number(slotId) + ";");
+
+    if (changeMaterialInSlotQuery.exec())
+    {
+        QMessageBox::information(nullptr,
+                                 "Успішна зміна",
+                                 "Кількість продукції у слоті успішно змінено");
+    }
+    else
+    {
+        QMessageBox::information(nullptr,
+                                 "Помилка зміни",
+                                 "Не вдалось змінити кількість продукції у слоті");
+    }
+}
+
+int getCurrentMaterialCountInSlot(const int slotId)
+{
+    QSqlQuery getCurrentMaterialQuery;
+    getCurrentMaterialQuery.exec("SELECT *"
+       "FROM СЛОТ WHERE ID = " + QString::number(slotId) + ";");
+    while(getCurrentMaterialQuery.next())
+    {
+        QString materialCount = getCurrentMaterialQuery.value(3).toString();
+        return materialCount.isEmpty() ? 0 : materialCount.toInt();
+    }
+    return 0;
 }

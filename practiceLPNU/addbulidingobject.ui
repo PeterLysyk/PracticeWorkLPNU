@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AddBulidingObject</class>
+ <widget class="QWidget" name="AddBulidingObject">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>321</width>
+    <height>213</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>БУДІВЕЛЬНИЙ ОБ'ЄКТ</string>
+  </property>
+  <widget class="QPushButton" name="AddBuildObjectButton">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>190</y>
+     <width>80</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Додати</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="IdObjectLabel">
+   <property name="geometry">
+    <rect>
+     <x>11</x>
+     <y>11</y>
+     <width>51</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>ID об'єкту</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="IdObject">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>10</y>
+     <width>232</width>
+     <height>19</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="AdressStreetLabel">
+   <property name="geometry">
+    <rect>
+     <x>11</x>
+     <y>71</y>
+     <width>41</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string> Вулиця</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="AdressStreet">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>70</y>
+     <width>231</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="AdressBuildingLabel">
+   <property name="geometry">
+    <rect>
+     <x>11</x>
+     <y>101</y>
+     <width>51</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Будинок</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="AdressBuilding">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>100</y>
+     <width>231</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="PrioretyLabel">
+   <property name="geometry">
+    <rect>
+     <x>11</x>
+     <y>131</y>
+     <width>81</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Пріоритетність</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="Priorety">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>130</y>
+     <width>231</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="StartBuildingDateLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>160</y>
+     <width>81</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Дата початку</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="AdressCityLabel">
+   <property name="geometry">
+    <rect>
+     <x>11</x>
+     <y>41</y>
+     <width>30</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string> Місто</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="AdressCity">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>40</y>
+     <width>231</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QDateEdit" name="StartBuildingDate">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>160</y>
+     <width>231</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="dateTime">
+    <datetime>
+     <hour>0</hour>
+     <minute>0</minute>
+     <second>0</second>
+     <year>2000</year>
+     <month>1</month>
+     <day>1</day>
+    </datetime>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

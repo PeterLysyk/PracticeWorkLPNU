@@ -5,7 +5,7 @@
 const QString addRecordToSuplierTableQuery =
         "INSERT INTO ПОСТАЧАЛЬНИК"
         "("
-        "ID_ПОСТАЧАЛЬНИКА,"
+        "ID,"
         "НАЗВА,"
         "ДАТА_УКЛАДЕННЯ_ДОГОВОРУ,"
         "РЕЙТИНГ"
@@ -15,7 +15,7 @@ const QString addRecordToSuplierTableQuery =
 const QString addRecordToStorageTableQuery =
         "INSERT INTO СКЛАД"
         "("
-        "ID_СКЛАДУ,"
+        "ID,"
         "АДРЕСА_МІСТО,"
         "АДРЕСА_ВУЛИЦЯ,"
         "АДРЕСА_НОМЕР,"
@@ -26,7 +26,7 @@ const QString addRecordToStorageTableQuery =
 const QString addRecordToConstructionObjectTableQuery =
         "INSERT INTO БУДІВЛЬНИЙ_ОБЄКТ"
         "("
-        "ID_ОБЄКТУ,"
+        "ID,"
         "АДРЕСА_МІСТО,"
         "АДРЕСА_ВУЛИЦЯ,"
         "АДРЕСА_НОМЕР,"
@@ -38,7 +38,7 @@ const QString addRecordToConstructionObjectTableQuery =
 const QString addRecordToMaterialTableQuery =
         "INSERT INTO МАТЕРІАЛ"
         "("
-        "ID_МАТЕРІАЛУ,"
+        "ID,"
         "НАЗВА,"
         "ДАТА_ВИГОТОВЛЕННЯ,"
         "ТЕРМІН_ПРИДАТНОСТІ,"
@@ -52,7 +52,7 @@ const QString addRecordToMaterialTableQuery =
 const QString addRecordToDeliveryTableQuery =
         "INSERT INTO ПОСТАВКА"
         "("
-        "ID_ПОСТАВКИ,"
+        "ID,"
         "ID_ПОСТАЧАЛЬНИКА,"
         "ID_МАТЕРІАЛУ,"
         "СТАН"
@@ -62,7 +62,7 @@ const QString addRecordToDeliveryTableQuery =
 const QString addRecordToSlotTableQuery =
         "INSERT INTO СЛОТ"
         "("
-        "ID_СЛОТА,"
+        "ID,"
         "ID_СКЛАДУ,"
         "ID_МАТЕРІАЛУ,"
         "КІЛЬКІСТЬ_МАТЕРІАЛУ"
@@ -72,11 +72,12 @@ const QString addRecordToSlotTableQuery =
 const QString addRecordToUsingTableQuery =
         "INSERT INTO ВИКОРИСТАННЯ"
         "("
-        "ID_ВИКОРИСТАННЯ,"
+        "ID,"
         "ID_ОБЄКТУ,"
         "ID_СЛОТА,"
+        "КІЛЬКІСТЬ_МАТЕРІАЛУ,"
         "ДАТА_ВИКОРИСТАННЯ"
         ")"
-        "VALUES(?,?,?,?);";
+        "VALUES(?,?,?,?,?);";
 
 #endif // TABLERECORDADDQUERIES_H

@@ -25,18 +25,51 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++17
 
 SOURCES += \
+        addbulidingobject.cpp \
+        adddelivery.cpp \
+        addmaterial.cpp \
+        addrecordstabwidget.cpp \
+        addslot.cpp \
+        addstorage.cpp \
+        addsuplier.cpp \
+        addusing.cpp \
         databasefunctions.cpp \
+        getrecordstabwidget.cpp \
+        getstatistictabwidget.cpp \
+        loginform.cpp \
         main.cpp \
         mainwindow.cpp
 
 HEADERS += \
+        addbulidingobject.h \
+        adddelivery.h \
+        addmaterial.h \
+        addrecordstabwidget.h \
+        addslot.h \
+        addstorage.h \
+        addsuplier.h \
+        addusing.h \
         databasefunctions.h \
+        databasetablesnames.h \
+        getrecordstabwidget.h \
+        getstatistictabwidget.h \
+        loginform.h \
         mainwindow.h \
         tablerecordaddqueries.h \
-        tablescreatequeries.h \
-        tableselectqueries.h
+        tablescreatequeries.h
 
 FORMS += \
+        addbulidingobject.ui \
+        adddelivery.ui \
+        addmaterial.ui \
+        addrecordstabwidget.ui \
+        addslot.ui \
+        addstorage.ui \
+        addsuplier.ui \
+        addusing.ui \
+        getrecordstabwidget.ui \
+        getstatistictabwidget.ui \
+        loginform.ui \
         mainwindow.ui
 
 # Default rules for deployment.

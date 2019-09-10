@@ -3,6 +3,11 @@
 
 #include <QMainWindow>
 #include<QtSql>
+#include<QTabWidget>
+#include"addrecordstabwidget.h"
+#include"getrecordstabwidget.h"
+#include"getstatistictabwidget.h"
+#include "loginform.h"
 
 namespace Ui
 {
@@ -14,16 +19,19 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(LoginForm *mLoginForm, QWidget *parent = nullptr);
     ~MainWindow();
     QSqlDatabase& getDataBase();
-
-private slots:
-    void on_pushButton_clicked();
+    void setDataBaseSettings(const QString &dbName, const QString &dbType);
 
 private:
     Ui::MainWindow *ui;
     QSqlDatabase mDataBase;
+    QTabWidget *mTotalTabWidget;
+    LoginForm *mLoginForm;
+    AddRecordsTabWidget *mAddRecordsTab;
+    GetRecordsTabWidget *mGetRecordsTab;
+    GetStatisticTabWidget *mGetStatisticTab;
 };
 
 #endif // MAINWINDOW_H
