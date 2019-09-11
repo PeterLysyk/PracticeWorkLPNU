@@ -24,5 +24,4 @@ void AddBulidingObject::on_AddBuildObjectButton_clicked()
                 ui->Priorety->text().toInt(),
                 ui->StartBuildingDate->text()
                 );
-    this->close();
 }

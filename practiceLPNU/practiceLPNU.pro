@@ -52,6 +52,7 @@ HEADERS += \
         databasefunctions.h \
         databasetablesnames.h \
         getrecordstabwidget.h \
+        getstatisticqueries.h \
         getstatistictabwidget.h \
         loginform.h \
         mainwindow.h \

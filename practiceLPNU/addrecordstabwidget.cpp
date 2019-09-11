@@ -77,7 +77,7 @@ void clearWidgetsInsideLayout(QVBoxLayout *layout)
 {
     while( QLayoutItem* item = layout->takeAt(0))
     {
-        Q_ASSERT( ! item->layout() ); // otherwise the layout will leak
+        Q_ASSERT(!item->layout()); // otherwise the layout will leak
         delete item->widget();
         delete item;
     }

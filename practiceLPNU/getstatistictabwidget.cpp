@@ -1,14 +1,15 @@
 #include "getstatistictabwidget.h"
 #include "ui_getstatistictabwidget.h"
-#include <QSqlQueryModel>
-#include <QMessageBox>
+#include "getstatisticqueries.h"
 #include <QSqlQuery>
+#include <QDebug>
 
 GetStatisticTabWidget::GetStatisticTabWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::GetStatisticTabWidget)
 {
     ui->setupUi(this);
+    mModel = new QSqlQueryModel();
 }
 
 GetStatisticTabWidget::~GetStatisticTabWidget()
@@ -18,31 +19,29 @@ GetStatisticTabWidget::~GetStatisticTabWidget()
 
 void GetStatisticTabWidget::on_getStatisticForObjects_clicked()
 {
-
+     addStatisticForView(getStatisticForBuildingObjects);
 }
 
 void GetStatisticTabWidget::on_getStatisticForMaterial_clicked()
 {
-
+    addStatisticForView(getStatisticForMaterial);
 }
 
 void GetStatisticTabWidget::on_getStatisticForSuplier_clicked()
 {
-    QSqlQueryModel *model = new QSqlQueryModel();
-    QSqlQuery getStatisticForSuplier;
+    addStatisticForView(getStatisticForSuplier);
+}
 
-    getStatisticForSuplier.exec(
-                "SELECT ПОСТАЧАЛЬНИК.НАЗВА, ПОСТАЧАЛЬНИК.РЕЙТИНГ, "
-                "COUNT( ПОСТАВКА.ID_ПОСТАЧАЛЬНИКА) AS КІЛЬКІСТЬ_ПОСТАВОК, "
-                "SUM( МАТЕРІАЛ.КІЛЬКІСТЬ) AS КІЛЬКІСТЬ_МАТЕРІАЛУ "
-                "FROM ПОСТАЧАЛЬНИК "
-                "LEFT JOIN ПОСТАВКА "
-                "ON ПОСТАЧАЛЬНИК.ID = ПОСТАВКА.ID_ПОСТАЧАЛЬНИКА "
-                "LEFT JOIN МАТЕРІАЛ "
-                "ON МАТЕРІАЛ.ID = ПОСТАВКА.ID_МАТЕРІАЛУ "
-                "GROUP BY ПОСТАЧАЛЬНИК.РЕЙТИНГ;");
-    model->setQuery(getStatisticForSuplier);
-    ui->StatisticTableView->setModel(model);
+void GetStatisticTabWidget::addStatisticForView(const QString &statisticQuery)
+{
+    ui->StatisticTableView->reset();
+
+    QSqlQuery getStatisticQuery;
+    getStatisticQuery.exec(statisticQuery);
+
+    mModel->setQuery(statisticQuery);
+    qDebug()<<"model = "<<mModel;
+    ui->StatisticTableView->setModel(mModel);
     ui->StatisticTableView->resizeRowsToContents();
     ui->StatisticTableView->resizeColumnsToContents();
 }

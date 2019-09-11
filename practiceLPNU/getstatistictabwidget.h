@@ -2,6 +2,7 @@
 #define GETSTATISTICTABWIDGET_H
 
 #include <QWidget>
+#include<QSqlQueryModel>
 
 namespace Ui {
 class GetStatisticTabWidget;
@@ -19,13 +20,13 @@ private slots:
     //void on_getStatisticForSuplier_clicked();
 
     void on_getStatisticForObjects_clicked();
-
     void on_getStatisticForMaterial_clicked();
-
     void on_getStatisticForSuplier_clicked();
+    void addStatisticForView(const QString &statisticQuery);
 
 private:
     Ui::GetStatisticTabWidget *ui;
+    QSqlQueryModel *mModel;
 };
 
 #endif // GETSTATISTICTABWIDGET_H
